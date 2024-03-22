@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.SlideshowFragment"
+    android:orientation="vertical">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_marginTop="10dp">
+
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           >
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Đăng tải công thức của riêng bạn!"
+                   android:textSize="20dp"
+                   android:textStyle="bold"
+                   android:textColor="@color/black"
+                   />
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nThêm mô tả cho món ăn của bạn:"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <EditText
+                   android:id="@+id/input_mota"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Điền mô tả cho món ăn của bạn tại đây"
+                   android:textSize="10dp"
+                   android:textStyle="italic"
+
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nCác nguyên liệu cần thiết"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <EditText
+                   android:id="@+id/input_nguyenlieu"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Điền nguyên liệu cho món ăn của bạn tại đây"
+                   android:textSize="10dp"
+                   android:textStyle="italic"
+                   />
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nThông tin dinh dưỡng:"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <EditText
+                   android:id="@+id/input_dinhduong"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Điền thông tin dinh dưỡng món ăn của bạn tại đây"
+                   android:textSize="10dp"
+                   android:textStyle="italic"
+                   />
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nCách làm:"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <EditText
+                   android:id="@+id/input_cachlam"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Điền mô tả cho món ăn của bạn tại đây"
+                   android:textSize="10dp"
+                   android:textStyle="italic"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nThêm hình ảnh cho món ăn:"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <ImageView
+                   android:id="@+id/input_image"
+                   android:layout_width="50dp"
+                   android:layout_height="60dp"
+                   android:src="@drawable/img_2"
+                   android:layout_gravity="center"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_horizontal"
+                   android:text="Ấn vào hình trên để tải ảnh"
+                   />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="\nThêm video(Nếu có):"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <ImageView
+                   android:id="@+id/input_video"
+                   android:layout_width="50dp"
+                   android:layout_height="60dp"
+                   android:src="@drawable/img_2"
+                   android:layout_gravity="center"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_horizontal"
+                   android:text="Ấn vào hình trên để tải video"
+                   />
+               <Button
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Hoàn tất"
+                   android:layout_gravity="center"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_horizontal"
+                   android:text="Sau khi nhấn hoàn tất công thức của bạn sẽ được \nkiểm duyệt"
+                   android:textStyle="italic"
+
+                   />
+           </LinearLayout>
+       </ScrollView>
+
+   </LinearLayout>
+    <TextView
+        android:id="@+id/text_slideshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</LinearLayout>
