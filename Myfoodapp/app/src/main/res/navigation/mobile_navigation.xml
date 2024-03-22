@@ -18,8 +18,14 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.myfoodapp.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_upload_congThuc"
+        android:name="com.example.myfoodapp.ui.upload.UploadFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_upload" />
+
+    <fragment
+        android:id="@+id/nav_DSYeuThich"
+        android:name="com.example.myfoodapp.ui.saved.SavedFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_daluu" />
 </navigation>
