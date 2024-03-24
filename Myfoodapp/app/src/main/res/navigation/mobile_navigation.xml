@@ -28,4 +28,19 @@
         android:name="com.example.myfoodapp.ui.saved.SavedFragment"
         android:label="Công thức đã lưu"
         tools:layout="@layout/fragment_daluu" />
+    <fragment
+        android:id="@+id/nav_nutri"
+        android:name="com.example.myfoodapp.ui.clorine.CaloFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_calo" />
+    <fragment
+        android:id="@+id/nav_video"
+        android:name="com.example.myfoodapp.ui.video.VideoFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/nav_xemct"
+        android:name="com.example.myfoodapp.ui.xemct.XemCTFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_xemct" />
 </navigation>

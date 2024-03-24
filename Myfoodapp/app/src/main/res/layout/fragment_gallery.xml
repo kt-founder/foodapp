@@ -17,7 +17,8 @@
         tools:layout_editor_absoluteY="2dp">
 
         <Button
-            android:id="@+id/foodDetail"
+            android:id="@+id/bt_Detail"
+            android:backgroundTint="@color/material_dynamic_primary70"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -29,7 +30,8 @@
             />
 
         <Button
-            android:id="@+id/nutrition"
+            android:id="@+id/bt_nutri"
+            android:backgroundTint="@color/material_dynamic_primary70"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginLeft="5dp"
@@ -39,7 +41,8 @@
             android:textSize="9dp" />
 
         <Button
-            android:id="@+id/videoCook"
+            android:id="@+id/bt_video"
+            android:backgroundTint="@color/material_dynamic_primary70"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginLeft="5dp"
@@ -48,7 +51,7 @@
             android:textSize="10dp"
             android:text="Nấu ăn với\n video" />
         <ImageView
-            android:id="@+id/yeuthich"
+            android:id="@+id/bt_yeuthich"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/img_1">
@@ -99,7 +102,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Nguyenlieu" />
-
+            <Button
+                android:id="@+id/bt_Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tùy chỉnh lượng nguyên liệu"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
+                android:layout_gravity="center
+"
+                />
             <TextView
                 android:id="@+id/txtBannerCachLam"
                 android:layout_width="match_parent"
@@ -141,6 +153,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

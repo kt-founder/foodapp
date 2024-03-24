@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="311dp" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:text="Danh sách công thức đã lưu"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold
+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="340dp"
+                android:layout_height="340dp">
+
+                <TableLayout
+                    android:layout_width="369dp"
+                    android:layout_height="match_parent">
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:id="@+id/Mon1"
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+                    <TableRow android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="74dp"
+                            android:layout_height="61dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/img" />
+
+                        <TextView
+                            android:text="Cơm gà xá xíu thơm ngon mại zo"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@android:drawable/btn_dialog" />
+                    </TableRow>
+
+
+                </TableLayout>
+            </TableLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
