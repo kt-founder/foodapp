@@ -20,7 +20,13 @@
             android:id="@+id/nav_DSYeuThich"
             android:icon="@drawable/ic_menu_yeuthich"
             android:title="Công thức yêu thích" />
-
-
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_fix"
+            android:title="Đồng hồ bấm giờ" />
+        <item
+            android:id="@+id/nav_shopping"
+            android:icon="?android:attr/actionModeFindDrawable"
+            android:title="Đặt đồ ăn" />
     </group>
 </menu>

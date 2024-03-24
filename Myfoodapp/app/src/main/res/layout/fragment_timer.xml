@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.timer.TimerFragment">
+
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="328dp"
+        android:layout_height="70dp"
+        android:text="Hẹn giờ"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.066" />
+
+    <Button
+        android:id="@+id/buttonMinute"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="148dp"
+        android:text="Phút"
+        app:layout_constraintStart_toEndOf="@+id/textViewMinute"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:text="Bắt đầu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMinute" />
+
+    <Button
+        android:id="@+id/buttonHour"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="148dp"
+        android:text="Giờ"
+        app:layout_constraintStart_toEndOf="@+id/textViewHour"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <TextView
+        android:id="@+id/textViewSecond"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:gravity="center"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/buttonMinute"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <TextView
+        android:id="@+id/textViewHour"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="148dp"
+        android:gravity="center"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:text="Hủy"
+        app:layout_constraintEnd_toStartOf="@+id/buttonStart"
+        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHour" />
+
+    <TextView
+        android:id="@+id/textViewMinute"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="148dp"
+        android:gravity="center"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/buttonHour"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <Button
+        android:id="@+id/buttonSecond"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:text="Giây"
+        app:layout_constraintStart_toEndOf="@+id/textViewSecond"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

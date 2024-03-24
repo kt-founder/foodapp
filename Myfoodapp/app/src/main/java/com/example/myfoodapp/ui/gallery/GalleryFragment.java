@@ -56,7 +56,22 @@ public class GalleryFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.nav_video);
             }
         });
-
+        Button button2 = view.findViewById(R.id.bt_Edit);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Navigation Component để chuyển đến Fragment mới
+                Navigation.findNavController(v).navigate(R.id.nav_change);
+            }
+        });
+        Button button3 = view.findViewById(R.id.bt_share);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Navigation Component để chuyển đến Fragment mới
+                Navigation.findNavController(v).navigate(R.id.nav_share);
+            }
+        });
     }
 
     @Override

@@ -133,7 +133,7 @@
 
                 >
                 <Button
-                    android:id="@+id/rating"
+                    android:id="@+id/bt_rating"
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -142,7 +142,7 @@
                     android:text="Đánh giá"
                     android:textSize="13dp" />
                 <Button
-                    android:id="@+id/share"
+                    android:id="@+id/bt_share"
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
