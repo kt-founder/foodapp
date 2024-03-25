@@ -69,8 +69,18 @@
         android:label="Công thức đã lưu"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/nav_slide_show"
+        android:id="@+id/nav_thucdon"
         android:name="com.example.myfoodapp.ui.slideshow.SlideshowFragment"
         android:label="Công thức đã lưu"
         tools:layout="@layout/fragment_slide_show" />
+    <fragment
+        android:id="@+id/nav_buy"
+        android:name="com.example.myfoodapp.ui.buy.BuyMeterialFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_buy_meterial" />
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.example.myfoodapp.ui.statistic.StatisticFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_statistic" />
 </navigation>

@@ -17,13 +17,21 @@
             android:icon="@drawable/ic_menu_yeuthich"
             android:title="Công thức yêu thích" />
         <item
+            android:id="@+id/nav_thucdon"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Lên thực đơn" />
+        <item
             android:id="@+id/nav_timer"
             android:icon="@android:drawable/ic_lock_idle_alarm"
             android:title="Đồng hồ bấm giờ" />
         <item
             android:id="@+id/nav_shopping"
-            android:icon="?android:attr/actionModeFindDrawable"
+            android:icon="@android:drawable/ic_menu_call"
             android:title="Đặt đồ ăn" />
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="?android:attr/actionModeFindDrawable"
+            android:title="Thống kê" />
         <item
             android:id="@+id/nav_setting"
             android:icon="@android:drawable/ic_menu_manage"
