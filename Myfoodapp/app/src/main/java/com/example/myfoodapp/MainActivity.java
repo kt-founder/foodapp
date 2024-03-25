@@ -61,21 +61,21 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            // Chuyển đến Fragment mới khi người dùng chọn mục menu
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new SettingFragment());
-            fragmentTransaction.commit();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+    //@Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_settings) {
+//            // Chuyển đến Fragment mới khi người dùng chọn mục menu
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new SettingFragment());
+//            fragmentTransaction.commit();
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

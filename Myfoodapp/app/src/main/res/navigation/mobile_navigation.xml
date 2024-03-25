@@ -63,4 +63,9 @@
         android:name="com.example.myfoodapp.ui.shopping.ShoppingFragment"
         android:label="Công thức đã lưu"
         tools:layout="@layout/fragment_shopping" />
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.myfoodapp.ui.setting.SettingFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

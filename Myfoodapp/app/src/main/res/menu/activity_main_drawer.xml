@@ -6,12 +6,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@android:drawable/ic_dialog_dialer"
             android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_upload"
-            android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_upload_congThuc"
             android:icon="@drawable/ic_menu_slideshow"
@@ -22,11 +18,15 @@
             android:title="Công thức yêu thích" />
         <item
             android:id="@+id/nav_timer"
-            android:icon="@drawable/ic_fix"
+            android:icon="@android:drawable/ic_lock_idle_alarm"
             android:title="Đồng hồ bấm giờ" />
         <item
             android:id="@+id/nav_shopping"
             android:icon="?android:attr/actionModeFindDrawable"
             android:title="Đặt đồ ăn" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Cài đặt" />
     </group>
 </menu>
