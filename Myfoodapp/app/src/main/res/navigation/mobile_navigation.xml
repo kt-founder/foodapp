@@ -68,4 +68,9 @@
         android:name="com.example.myfoodapp.ui.setting.SettingFragment"
         android:label="Công thức đã lưu"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/nav_slide_show"
+        android:name="com.example.myfoodapp.ui.slideshow.SlideshowFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_slide_show" />
 </navigation>

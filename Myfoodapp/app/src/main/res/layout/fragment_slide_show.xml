@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.slideshow.SlideshowFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh sách thực đơn"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_menufood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    </ScrollView>
+
+</LinearLayout>

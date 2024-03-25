@@ -22,4 +22,6 @@
     <string name="menu_home">Trang chủ</string>
     <string name="menu_gallery">Thông tin món ăn</string>
     <string name="menu_slideshow">Đăng tải công thức</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
