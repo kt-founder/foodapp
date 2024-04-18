@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
@@ -18,6 +20,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.Foodli
     private List<Food> typeList;
 
     public FoodListAdapter(List<Food> typeList) {
+
         this.typeList = typeList;
     }
 
@@ -34,6 +37,15 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.Foodli
         if(food==null) return;
         holder.img.setImageResource(food.getImg());
         holder.tv.setText(food.getName());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.nav_gallery);
+            }
+
+        });
+
+
     }
 
 
@@ -48,10 +60,12 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.Foodli
     public class FoodlistHolder extends RecyclerView.ViewHolder{
         private ImageView img;
         private TextView tv;
+        private CardView cardView;
         public FoodlistHolder(@NonNull View view) {
             super(view);
             img= view.findViewById(R.id.img);
             tv = view.findViewById(R.id.tv);
+            cardView = view.findViewById(R.id.layout_item_foodlist);
         }
 
     }

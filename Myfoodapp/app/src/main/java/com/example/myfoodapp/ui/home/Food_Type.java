@@ -1,23 +1,39 @@
 package com.example.myfoodapp.ui.home;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 
-public class Food_Type implements Serializable {
-    private int imag;
-    private String name,time;
+public class Food_Type implements Serializable{
+    private int id;
+    private byte[] img;
+    private String name;
 
-    public Food_Type(int imag, String name) {
-        this.imag = imag;
+    public Food_Type(int id, byte[] img, String name) {
+        this.id = id;
+        this.img = img;
         this.name = name;
-
     }
 
-    public int getImag() {
-        return imag;
+    public int getId() {
+        return id;
     }
 
-    public void setImag(int imag) {
-        this.imag = imag;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     public String getName() {
@@ -29,4 +45,3 @@ public class Food_Type implements Serializable {
     }
 
 }
-

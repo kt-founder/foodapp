@@ -25,23 +25,23 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
     private List<Food> mfoodList;
     private Context context;
 
-    public Food_Adapter(Context context,List<Food> foodList) {
-
+    public Food_Adapter(Context context, List<Food> foodList) {
         this.foodList = foodList;
-        this.context =context;
+        this.mfoodList = new ArrayList<>(foodList); // Sao chép danh sách ban đầu
+        this.context = context;
     }
 
     @NonNull
     @Override
     public FoodHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_food,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_food, parent, false);
         return new FoodHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FoodHolder holder, int position) {
         Food food = foodList.get(position);
-        if(food==null) return ;
+        if (food == null) return;
         holder.img.setImageResource(food.getImg());
         holder.tv_name.setText(food.getName());
         holder.tv_time.setText(food.getTime());
@@ -55,17 +55,14 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
 
     @Override
     public int getItemCount() {
-        if(foodList!=null)
-            return foodList.size();
-        return 0;
+        return foodList.size();
     }
-
-
 
     class FoodHolder extends RecyclerView.ViewHolder {
         private ImageView img;
         private TextView tv_name, tv_time;
         private RelativeLayout cardView;
+
         public FoodHolder(@NonNull View view) {
             super(view);
             img = view.findViewById(R.id.img);
@@ -73,26 +70,26 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
             tv_time = view.findViewById(R.id.tv_time);
             cardView = view.findViewById(R.id.layout_food);
         }
-
-
     }
+
     @Override
     public Filter getFilter() {
-
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                String strSearch = charSequence.toString();
-                if(strSearch.isEmpty()){
-                    foodList=null;
-                }else{
-                    List<Food> list = new ArrayList<>();
-                    for(Food food:mfoodList){
-                        if (food.getName().toLowerCase().contains(strSearch.toLowerCase())) {
-                            list.add(food);
+                String strSearch = charSequence.toString().toLowerCase().trim();
+                if (strSearch.isEmpty()) {
+                    foodList.clear();
+                    foodList.addAll(mfoodList); // Khôi phục danh sách ban đầu
+                } else {
+                    List<Food> filteredList = new ArrayList<>();
+                    for (Food food : mfoodList) {
+                        if (food.getName().toLowerCase().contains(strSearch)) {
+                            filteredList.add(food);
                         }
-                        foodList=list;
                     }
+                    foodList.clear();
+                    foodList.addAll(filteredList);
                 }
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = foodList;
@@ -101,7 +98,6 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                foodList = (List<Food>) filterResults.values;
                 notifyDataSetChanged();
             }
         };

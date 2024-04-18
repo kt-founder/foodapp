@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
+import com.example.myfoodapp.dal.SQLiteHelper;
+import com.example.myfoodapp.dao.TypefoodDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class HomeFragment extends Fragment   {
     private SearchView searchView;
     private List<Food> foodList,li;
     private boolean isSearchViewExpanded = false;
+    private SQLiteHelper dbHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -75,8 +78,10 @@ public class HomeFragment extends Fragment   {
     }
 
     private void setupRecyclerView() {
-        food_type_adapter = new Food_Type_Adapter(getContext(),getTypeList());
-        GridLayoutManager manager = new GridLayoutManager(requireContext(), 3);
+        dbHelper = new SQLiteHelper(getContext());
+        TypefoodDAO typefoodDAO = new TypefoodDAO(getContext()); // Tạo một thể hiện của TypefoodDAO
+        food_type_adapter = new Food_Type_Adapter(getContext(), typefoodDAO.getAllFoodTypes()); // Gọi phương thức không tĩnh từ thể hiện
+        GridLayoutManager manager = new GridLayoutManager(requireContext(), 5);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(food_type_adapter);
 
@@ -86,31 +91,6 @@ public class HomeFragment extends Fragment   {
         manager1.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerSearch.setLayoutManager(manager1);
         recyclerSearch.setAdapter(food_adapter);
-    }
-    private List<Food_Type> getTypeList() {
-        List<Food_Type> list = new ArrayList<>();
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-        list.add(new Food_Type(R.drawable.img, "Loại 1"));
-
-        return list;
     }
 
     private List<Food> getFoodList() {

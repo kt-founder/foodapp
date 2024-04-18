@@ -2,16 +2,23 @@ package com.example.myfoodapp.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.myfoodapp.ui.home.HomeFragment;
+
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,13 +47,18 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
     public void onBindViewHolder(@NonNull FoodTypeHolder holder, int position) {
         Food_Type food_type= typeList.get(position);
         if(food_type==null) return;
-        holder.img.setImageResource(food_type.getImag());
+        // Chuyển đổi mảng byte thành đối tượng Bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(food_type.getImg(), 0, food_type.getImg().length);
+        holder.img.setImageBitmap(bitmap);
         holder.tv.setText(food_type.getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.nav_gallery);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("food_type",  food_type);
 
+                // Sử dụng Navigation Component để chuyển đến Fragment mới và truyền dữ liệu
+                Navigation.findNavController(v).navigate(R.id.nav_listfood, bundle);
             }
         });
 
@@ -61,7 +73,7 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
         return 0;
     }
 
-    public class FoodTypeHolder extends RecyclerView.ViewHolder{
+    public static class FoodTypeHolder extends RecyclerView.ViewHolder{
 
         private ImageView img;
         private TextView tv;
