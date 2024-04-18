@@ -30,7 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String tbtypefood = "CREATE TABLE typefood (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, "  +
-                "img BLOB," +
+               "img BLOB," +
                 "name TEXT" +
                 ")";
         db.execSQL(tbtypefood);
@@ -63,8 +63,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 R.drawable.tf_montet};
 
         db.beginTransaction();
-        for (int i = 0; i < foodImages.length; i++) {
+        for (int i = 0; i < foodNames.length; i++) {
             ContentValues values = new ContentValues();
+            assert context != null;
             Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), foodImages[i]);
             if (bitmap != null) {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -74,11 +75,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 values.put("img", byteArray);
                 db.insert("typefood", null, values);
                 // Đóng luồng stream sau khi sử dụng
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
         db.setTransactionSuccessful();
@@ -88,6 +84,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "onUpgrade: Database upgrade from version " + oldVersion + " to " + newVersion);
+        if(oldVersion!=newVersion){
+            db.execSQL("DROP TABLE IF EXISTS typefood");
+            onCreate(db);
+        }
     }
 
 }

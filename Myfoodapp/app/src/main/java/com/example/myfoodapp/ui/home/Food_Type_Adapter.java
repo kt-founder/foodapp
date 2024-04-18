@@ -47,7 +47,7 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
     public void onBindViewHolder(@NonNull FoodTypeHolder holder, int position) {
         Food_Type food_type= typeList.get(position);
         if(food_type==null) return;
-        // Chuyển đổi mảng byte thành đối tượng Bitmap
+         //Chuyển đổi mảng byte thành đối tượng Bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(food_type.getImg(), 0, food_type.getImg().length);
         holder.img.setImageBitmap(bitmap);
         holder.tv.setText(food_type.getName());

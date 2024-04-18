@@ -1,8 +1,10 @@
 package com.example.myfoodapp.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.myfoodapp.dal.SQLiteHelper;
 import com.example.myfoodapp.ui.home.Food_Type;
@@ -16,41 +18,29 @@ public class TypefoodDAO {
 
     public TypefoodDAO(Context context) {
         sqLiteHelper = new SQLiteHelper(context);
-        db = sqLiteHelper.getReadableDatabase(); // Sử dụng getReadableDatabase() vì bạn chỉ đọc dữ liệu
+        db = sqLiteHelper.getWritableDatabase(); // Sử dụng getWritableDatabase() để ghi dữ liệu
     }
+
+
     public List<Food_Type> getAllFoodTypes() {
         List<Food_Type> foodTypes = new ArrayList<>();
+        db = sqLiteHelper.getReadableDatabase();
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM typefood",null);
 
-        // Thực hiện truy vấn để lấy toàn bộ dữ liệu từ bảng "typefood"
-        Cursor cursor = db.rawQuery("SELECT * FROM typefood", null);
-
-        // Kiểm tra xem cursor có null không và có dòng dữ liệu nào không
-        if (cursor != null && cursor.getCount() > 0) {
-            // Di chuyển con trỏ đến vị trí đầu tiên
-            cursor.moveToFirst();
-            do {
-                // Kiểm tra xem cột có tồn tại trong kết quả truy vấn không
-                int idIndex = cursor.getColumnIndex("id");
-                int nameIndex = cursor.getColumnIndex("name");
-                int imgIndex = cursor.getColumnIndex("img");
-                if (idIndex != -1 && nameIndex != -1 && imgIndex != -1) {
-                    // Đọc dữ liệu từ Cursor và tạo đối tượng Food_Type tương ứng
-                    int id = cursor.getInt(idIndex);
-                    String name = cursor.getString(nameIndex);
-                    byte[] imgBytes = cursor.getBlob(imgIndex);
-
-                    // Tạo đối tượng Food_Type và thêm vào danh sách
-                    Food_Type foodType = new Food_Type(id, imgBytes,name);
-                    foodTypes.add(foodType);
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                do{
+                    foodTypes.add(new Food_Type(cursor.getInt(0),cursor.getBlob(1),cursor.getString(2)));
                 }
-            } while (cursor.moveToNext());
+                while (cursor.moveToNext());
 
-            // Đóng con trỏ sau khi sử dụng xong
-            cursor.close();
+            }
         }
+        catch (Exception ex){
 
+        }
         return foodTypes;
     }
 
 }
-

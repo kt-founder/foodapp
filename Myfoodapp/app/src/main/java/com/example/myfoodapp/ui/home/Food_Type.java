@@ -14,7 +14,7 @@ public class Food_Type implements Serializable{
     private byte[] img;
     private String name;
 
-    public Food_Type(int id, byte[] img, String name) {
+    public Food_Type(int id,byte[] img, String name) {
         this.id = id;
         this.img = img;
         this.name = name;
