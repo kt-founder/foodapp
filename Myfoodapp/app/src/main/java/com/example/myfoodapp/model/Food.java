@@ -1,8 +1,10 @@
-package com.example.myfoodapp.ui.home;
+package com.example.myfoodapp.model;
 
 public class Food {
-    private int img;
+    private  int id;
     private String name;
+
+    private int img;
     private String time;
 
     public Food(int img, String name, String time) {

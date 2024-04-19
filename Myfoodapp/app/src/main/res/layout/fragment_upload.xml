@@ -7,20 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.upload.UploadFragment"
     android:orientation="vertical"
-    android:layout_marginLeft="10dp"
+    android:layout_marginLeft="20dp"
     android:layout_marginRight="10dp">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical"
-       android:layout_marginTop="10dp">
+       android:layout_marginTop="15dp">
        <TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="Đăng tải công thức của riêng bạn!"
-           android:textSize="20dp"
+           android:textSize="22dp"
            android:textStyle="bold"
-           android:textColor="@color/cardview_dark_background"
+           android:textColor="#FF3300"
            />
        <ScrollView
            android:layout_width="match_parent"
@@ -29,21 +29,23 @@
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:orientation="vertical">
+               android:orientation="vertical"
+               android:layout_margin="10dp">
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="\nTên món ăn vủa bạn là gì nhỉ:"
+                   android:text="* Nhập Tên món ăn"
                    android:textSize="20dp"
                    android:textColor="@color/black"
+
                    />
                <EditText
                    android:id="@+id/input_tenmon"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Hãy điền tên món ăn tại đây"
-                   android:textSize="10dp"
+                   android:hint="Nhập tên món ăn"
+                   android:textSize="13dp"
                    android:textStyle="italic"
 
                    />
@@ -51,7 +53,7 @@
 
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="\nThêm mô tả cho món ăn của bạn:"
+                   android:text="* Giới thiệu món ăn"
                    android:textSize="20dp"
                    android:textColor="@color/black"
                    />
@@ -59,120 +61,46 @@
                    android:id="@+id/input_mota"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Điền mô tả cho món ăn của bạn tại đây"
-                   android:textSize="10dp"
+                   android:hint="Nhập thông tin món ăn"
+                   android:textSize="13dp"
                    android:textStyle="italic"
                    />
                <TextView
+
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="\nCác nguyên liệu cần thiết:"
+                   android:text="* Nguyên liệu món ăn"
                    android:textSize="20dp"
                    android:textColor="@color/black"
                    />
-
-               <TableLayout
-                   android:id="@+id/bangdinhduong"
+               <EditText
+                   android:id="@+id/input_mota"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   >
-                   <TableRow>
+                   android:hint="Nhập thông tin nguyên liệu"
+                   android:textSize="13dp"
+                   android:textStyle="italic"
+                   />
+               <TextView
 
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:padding="5dp"
-                           android:text="SL(g)"
-                           android:textColor="@color/black" />
-                       <TextView
-                           android:text="Nguyên liệu cần thiết"
-                           android:padding="5dp"
-                           android:textColor="@color/black"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                            android:padding="5dp"
-                            android:inputType="number"
-                       />
-                       <EditText
-                           android:hint="Điền nguyên liệu..."
-                           android:inputType="text"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <EditText
-                           android:hint="Điền nguyên liệu..."
-                           android:inputType="text"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:inputType="number"
-                           android:padding="5dp"
-                           />
-                       <EditText
-                           android:hint="Điền nguyên liệu..."
-                           android:inputType="text"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:inputType="number"
-                           android:padding="5dp"
-                           />
-                       <EditText
-                           android:hint="Điền nguyên liệu..."
-                           android:inputType="text"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:inputType="number"
-                           android:padding="5dp"
-                           />
-                       <EditText
-                           android:hint="Điền nguyên liệu..."
-                           android:inputType="text"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="* Cách làm"
+                   android:textSize="20dp"
+                   android:textColor="@color/black"
+                   />
+               <EditText
+                   android:id="@+id/input_mota"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Nhập các bước "
+                   android:textSize="13dp"
+                   android:textStyle="italic"
+                   />
 
-                       <Button
-                           android:id="@+id/bt_add"
-                           android:layout_width="41dp"
-                           android:layout_height="wrap_content"
-                           android:background="@android:color/transparent"
-                           android:gravity="left"
-                           android:text="+"
-                           android:textColor="@android:color/black" />
-                       <TextView
-                           android:text="(Nhan + De them thong tin)"
-                           android:textColor="@color/design_default_color_primary_variant"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           />
-                   </TableRow>
-               </TableLayout>
+
+
+
 
                <TextView
 
@@ -183,7 +111,7 @@
                    android:textColor="@color/black"
                    />
                <TableLayout
-                   android:id="@+id/bangnguyenlieu"
+                   android:id="@+id/bangdinhduong"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    >
@@ -268,22 +196,7 @@
                    </TableRow>
 
                </TableLayout>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="\nCách làm:"
-                   android:textSize="20dp"
-                   android:textColor="@color/black"
-                   />
-               <EditText
-                   android:id="@+id/input_cachlam"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="Công thức món ăn"
-                   android:inputType="text"
-                   android:textSize="10dp"
-                   android:textStyle="italic"
-                   />
+
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
@@ -312,18 +225,13 @@
                    android:textSize="20dp"
                    android:textColor="@color/black"
                    />
-               <ImageView
-                   android:id="@+id/input_video"
-                   android:layout_width="50dp"
-                   android:layout_height="60dp"
-                   android:src="@drawable/img_2"
-                   android:layout_gravity="center"
-                   />
-               <TextView
+               <EditText
+                   android:id="@+id/input_mota"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:gravity="center_horizontal"
-                   android:text="Ấn vào hình trên để tải video"
+                   android:hint="Nhập link video  "
+                   android:textSize="13dp"
+                   android:textStyle="italic"
                    />
                <Button
                    android:id="@+id/bt_Upload"

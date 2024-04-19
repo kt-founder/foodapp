@@ -10,14 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentStatisticBinding;
 import com.example.myfoodapp.ui.foodlist.FoodListAdapter;
-import com.example.myfoodapp.ui.home.Food;
-import com.example.myfoodapp.ui.slideshow.MenufoodAdapter;
+import com.example.myfoodapp.model.Food;
 
 import java.util.ArrayList;
 import java.util.List;

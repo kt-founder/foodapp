@@ -10,9 +10,7 @@
         android:name="com.example.myfoodapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
-        <action
-        android:id="@+id/actionNavHomeToNavListfood"
-        app:destination="@id/nav_listfood" />
+
     </fragment>
 
     <fragment
@@ -91,5 +89,13 @@
         android:id="@+id/nav_listfood"
         android:name="com.example.myfoodapp.ui.foodlist.FoodlistFragment"
         android:label="Danh sách món ăn "
-        tools:layout="@layout/fragment_listfood" />
+        tools:layout="@layout/fragment_listfood" >
+        <action
+            android:id="@+id/action_homeFragment_to_foodlistFragment"
+            app:destination="@id/nav_listfood"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 </navigation>
