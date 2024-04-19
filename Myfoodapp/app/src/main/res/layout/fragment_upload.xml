@@ -22,6 +22,11 @@
            android:textStyle="bold"
            android:textColor="#FF3300"
            />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="13dp"
+           android:textColor="#FF3333"/>
        <ScrollView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -58,7 +63,7 @@
                    android:textColor="@color/black"
                    />
                <EditText
-                   android:id="@+id/input_mota"
+                   android:id="@+id/mota"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="Nhập thông tin món ăn"
@@ -74,7 +79,7 @@
                    android:textColor="@color/black"
                    />
                <EditText
-                   android:id="@+id/input_mota"
+                   android:id="@+id/nguyenlieu"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="Nhập thông tin nguyên liệu"
@@ -90,7 +95,7 @@
                    android:textColor="@color/black"
                    />
                <EditText
-                   android:id="@+id/input_mota"
+                   android:id="@+id/cachlam"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="Nhập các bước "
@@ -110,92 +115,117 @@
                    android:textSize="20dp"
                    android:textColor="@color/black"
                    />
-               <TableLayout
-                   android:id="@+id/bangdinhduong"
+               <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   >
-                   <TableRow>
-
+                   android:orientation="vertical">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="10dp">
                        <TextView
-                           android:layout_width="wrap_content"
+                           android:layout_width="0dp"
                            android:layout_height="wrap_content"
-                           android:padding="5dp"
-                           android:text="SL"
-                           android:textColor="@color/black" />
-                       <TextView
-                           android:text="Các chất dinh dưỡng"
-                           android:padding="5dp"
-                           android:textColor="@color/black"
-                           />
-                   </TableRow>
-                   <TableRow>
+                           android:layout_weight="1"
+                           android:text="Chất đạm"
+                           android:textSize="13dp"
+                           android:gravity="center"
+                           android:textColor="@color/black"/>
                        <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <TextView
-                           android:text="protid"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:textColor="@color/black"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <TextView
-                           android:text="lipit"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:textColor="@color/black"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <TextView
-                           android:text="glucid"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:textColor="@color/black"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <TextView
-                           android:text="chất xơ"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:textColor="@color/black"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
-                   <TableRow>
-                       <EditText
-                           android:padding="5dp"
-                           android:inputType="number"
-                           />
-                       <TextView
-                           android:text="calo"
-                           android:textStyle="italic"
-                           android:textSize="10dp"
-                           android:textColor="@color/black"
-                           android:padding="5dp"
-                           />
-                   </TableRow>
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:textSize="13dp"
+                           android:hint="Nhập"/>
 
-               </TableLayout>
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="10dp">
+                       <TextView
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Chất đường bột"
+                           android:textSize="13dp"
+                           android:gravity="center"
+                           android:textColor="@color/black"/>
+                       <EditText
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:textSize="13dp"
+                           android:hint="Nhập"/>
+
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="10dp">
+                       <TextView
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Chất béo"
+                           android:textSize="13dp"
+                           android:gravity="center"
+                           android:textColor="@color/black"/>
+                       <EditText
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:textSize="13dp"
+                           android:hint="Nhập"/>
+
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="10dp">
+                       <TextView
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Chất xơ"
+                           android:textSize="13dp"
+                           android:gravity="center"
+                           android:textColor="@color/black"/>
+                       <EditText
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:textSize="13dp"
+                           android:hint="Nhập"/>
+
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="10dp">
+                       <TextView
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Calo"
+                           android:textSize="13dp"
+                           android:gravity="center"
+                           android:textColor="@color/black"/>
+                       <EditText
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:textSize="13dp"
+                           android:hint="Nhập"/>
+
+                   </LinearLayout>
+
+               </LinearLayout>
 
                <TextView
                    android:layout_width="match_parent"
