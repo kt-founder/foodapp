@@ -26,4 +26,10 @@
     <string name="menu_slideshow">Đăng tải công thức</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="type">
+        <item>Dưới 15 phút</item>
+        <item>15 - 30  phút</item>
+        <item>30 - 60 phút</item>
+        <item>Trên 60 phút</item>
+    </string-array>
 </resources>

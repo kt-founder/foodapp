@@ -74,6 +74,8 @@ public class HomeFragment extends Fragment   {
             }
         });
 
+
+
         return root;
     }
 
@@ -95,13 +97,13 @@ public class HomeFragment extends Fragment   {
 
     private List<Food> getFoodList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xÃ o", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xÃ o", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 

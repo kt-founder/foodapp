@@ -43,13 +43,13 @@ public class StatisticFragment extends Fragment {
     }
     private List<Food> getList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xao", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xao", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 }
