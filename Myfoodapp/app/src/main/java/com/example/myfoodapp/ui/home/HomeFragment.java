@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.dal.SQLiteHelper;
 import com.example.myfoodapp.dao.TypefoodDAO;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.Food_Adapter;
+import com.example.myfoodapp.model.Food_Type_Adapter;
 
 import java.util.ArrayList;
 import java.util.List;

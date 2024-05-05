@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myfoodapp.R;
-import com.example.myfoodapp.ui.home.Food;
-import com.example.myfoodapp.ui.home.Food_Type;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.Food_Type;
 
 import java.util.ArrayList;
 import java.util.List;

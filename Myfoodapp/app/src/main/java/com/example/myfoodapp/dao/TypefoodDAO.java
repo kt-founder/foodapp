@@ -1,13 +1,11 @@
 package com.example.myfoodapp.dao;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.myfoodapp.dal.SQLiteHelper;
-import com.example.myfoodapp.ui.home.Food_Type;
+import com.example.myfoodapp.model.Food_Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class TypefoodDAO {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 do{
-                    foodTypes.add(new Food_Type(cursor.getInt(0),cursor.getBlob(1),cursor.getString(2)));
+                    foodTypes.add(new Food_Type(cursor.getInt(0),cursor.getInt(1),cursor.getString(2)));
                 }
                 while (cursor.moveToNext());
 
