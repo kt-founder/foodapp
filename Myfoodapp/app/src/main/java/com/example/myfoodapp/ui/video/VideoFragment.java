@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,9 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.myfoodapp.R;
-import com.example.myfoodapp.databinding.FragmentHomeBinding;
 import com.example.myfoodapp.databinding.FragmentVideoBinding;
-import com.example.myfoodapp.ui.home.HomeViewModel;
 
 public class VideoFragment extends Fragment {
 
@@ -24,14 +21,7 @@ public class VideoFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
-        binding = FragmentVideoBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        View root = inflater.inflate(R.layout.fragment_video, container, false);
         return root;
     }
     @Override

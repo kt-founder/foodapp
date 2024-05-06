@@ -18,7 +18,7 @@ import com.example.myfoodapp.R;
 
 public class ChangeFragment extends Fragment {
 
-    private ChangeViewModel mViewModel;
+
 
     public static ChangeFragment newInstance() {
         return new ChangeFragment();
@@ -42,7 +42,7 @@ public class ChangeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ChangeViewModel.class);
+
         // TODO: Use the ViewModel
     }
 

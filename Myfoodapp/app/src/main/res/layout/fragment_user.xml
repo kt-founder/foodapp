@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ui.user.UserFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/user">
+        <Button
+            android:id="@+id/user_tk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/user_congthuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ĐĂNG TẢI CÔNG THỨC"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/user_quanly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý công thức"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/user_thich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Món ăn yêu thích"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/user_thucdon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thực đơn"
+            android:gravity="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/admin"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/admin_tk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/admin_congthuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ĐĂNG TẢI CÔNG THỨC"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/admin_quanly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý công thức"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/admin_thongke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thống kê"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -18,7 +18,6 @@ import com.example.myfoodapp.R;
 
 public class BuyMeterialFragment extends Fragment {
 
-    private BuyMeterialViewModel mViewModel;
 
     public static BuyMeterialFragment newInstance() {
         return new BuyMeterialFragment();
@@ -42,7 +41,7 @@ public class BuyMeterialFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BuyMeterialViewModel.class);
+
         // TODO: Use the ViewModel
     }
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,22 +14,14 @@ import androidx.navigation.Navigation;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentCaloBinding;
-import com.example.myfoodapp.ui.home.HomeViewModel;
 
 public class CaloFragment extends Fragment {
 
-    private FragmentCaloBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentCaloBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-//        final TextView textView = binding.videoCook;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        View root = inflater.inflate(R.layout.fragment_calo, container, false);
         return root;
     }
 
@@ -66,9 +57,5 @@ public class CaloFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+
 }

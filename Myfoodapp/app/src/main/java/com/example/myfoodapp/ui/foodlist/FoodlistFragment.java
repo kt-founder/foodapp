@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.FoodListAdapter;
 import com.example.myfoodapp.model.Food_Type;
 
 import java.util.ArrayList;

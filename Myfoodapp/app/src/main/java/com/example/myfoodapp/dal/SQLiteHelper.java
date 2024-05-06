@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "FoodApp.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 7;
     private static final String TAG = "SQLiteHelper";
     private final Context context;
 
@@ -28,39 +28,29 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+//        typefood
         String tbtypefood = "CREATE TABLE typefood (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, "  +
                "img INTEGER," +
                 "name TEXT" +
                 ")";
         db.execSQL(tbtypefood);
-
+//        food
         String tbfood ="CREATE TABLE food (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "img INTEGER," +
-                "name TEXT," +
-                "glucid INTEGER," +
-                "lipit INTEGER," +
-                "protid INTEGER," +
-                "chatxo INTEGER," +
-                "calo INTEGER," +
-                "nguyenlieu TEXT" +
-                ")";
-
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,mota TEXT,img BLOB,time TEXT,"+
+                "type TEXT,nguyenlieu TEXT,nutrition TEXT,cachlam TEXT,video TEXT);";
         db.execSQL(tbfood);
 
-        // Thêm dữ liệu mẫu vào bảng typefood
         insertSampleData(db);
     }
-
     private void insertSampleData(SQLiteDatabase db) {
-        String[] Names = {"Bún phở", "Hải Sản", "Thịt Bò", "Thịt gà", "Nộm-Gỏi", "Cháo", "Món Chay",
-                "Bánh Mì-Xôi", "Cơm", "Món Xào", "Món Kho", "Món Chiên", "Món Tết"};
+        String[] Names = {"Bún phở", "Hải Sản", "Thịt Bò", "Thịt gà","Thịt heo", "Nộm-Gỏi", "Cháo", "Món Chay",
+                "Bánh Mì-Xôi",  "Món Xào", "Món Kho", "Món Chiên","Đồ ăn vặt", "Món Tết","Tất cả"};
         int[] Images = {R.drawable.tf_bunpho, R.drawable.tf_haisan, R.drawable.tf_thitbo,
-                R.drawable.tf_thitga, R.drawable.tf_nom, R.drawable.tf_chao,
-                R.drawable.tf_chay, R.drawable.tf_banhmi_xoi, R.drawable.tf_com,
-                R.drawable.tf_xao, R.drawable.tf_kho, R.drawable.tf_monchien,
-                R.drawable.tf_montet};
+                R.drawable.tf_thitga,R.drawable.tf_thitheo, R.drawable.tf_nom, R.drawable.tf_chao,
+                R.drawable.tf_chay, R.drawable.tf_banhmi_xoi,
+                R.drawable.tf_xao, R.drawable.tf_kho, R.drawable.tf_monchien,R.drawable.tf_anvat,
+                R.drawable.tf_montet,R.drawable.tf_tatca};
 
         db.beginTransaction();
         for (int i = 0; i < Names.length; i++) {
@@ -77,8 +67,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "onUpgrade: Database upgrade from version " + oldVersion + " to " + newVersion);
-        if(oldVersion!=newVersion){
+        if (oldVersion < newVersion) { // Đảm bảo rằng oldVersion < newVersion để chạy lại chỉ khi có sự thay đổi
             db.execSQL("DROP TABLE IF EXISTS typefood");
+            db.execSQL("DROP TABLE IF EXISTS food");
+            db.execSQL("DROP TABLE IF EXISTS nutrition");
+            db.execSQL("DROP TABLE IF EXISTS food_typefood");
             onCreate(db);
         }
     }

@@ -29,9 +29,9 @@
             android:icon="@android:drawable/ic_menu_call"
             android:title="Đặt đồ ăn" />
         <item
-            android:id="@+id/nav_statistics"
+            android:id="@+id/nav_user"
             android:icon="?android:attr/actionModeFindDrawable"
-            android:title="Thống kê" />
+            android:title="Tiện ích người dùng" />
         <item
             android:id="@+id/nav_setting"
             android:icon="@android:drawable/ic_menu_manage"

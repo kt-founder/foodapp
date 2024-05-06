@@ -17,14 +17,10 @@ import androidx.navigation.Navigation;
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentDaluuBinding;
 public class SavedFragment extends Fragment {
-    private FragmentDaluuBinding binding;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        SavedViewModel savedViewModel =
-                    new ViewModelProvider(this).get(SavedViewModel.class);
-        binding = FragmentDaluuBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
+        View root = inflater.inflate(R.layout.fragment_daluu, container, false);
         return root;
     }
     @Override

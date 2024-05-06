@@ -3,6 +3,7 @@ package com.example.myfoodapp.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import com.example.myfoodapp.dal.SQLiteHelper;
 import com.example.myfoodapp.model.Food_Type;
@@ -16,8 +17,8 @@ public class TypefoodDAO {
 
     public TypefoodDAO(Context context) {
         sqLiteHelper = new SQLiteHelper(context);
-        db = sqLiteHelper.getWritableDatabase(); // Sử dụng getWritableDatabase() để ghi dữ liệu
     }
+
 
 
     public List<Food_Type> getAllFoodTypes() {
