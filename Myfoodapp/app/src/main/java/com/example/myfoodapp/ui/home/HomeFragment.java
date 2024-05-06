@@ -78,12 +78,12 @@ public class HomeFragment extends Fragment   {
     }
 
     private void setupRecyclerView() {
-        dbHelper = new SQLiteHelper(getContext());
-        TypefoodDAO typefoodDAO = new TypefoodDAO(getContext()); // Tạo một thể hiện của TypefoodDAO
-        food_type_adapter = new Food_Type_Adapter(getContext(), typefoodDAO.getAllFoodTypes()); // Gọi phương thức không tĩnh từ thể hiện
-        GridLayoutManager manager = new GridLayoutManager(requireContext(), 5);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(food_type_adapter);
+//        //dbHelper = new SQLiteHelper(getContext());
+//        TypefoodDAO typefoodDAO = new TypefoodDAO(getContext()); // Tạo một thể hiện của TypefoodDAO
+//        food_type_adapter = new Food_Type_Adapter(getContext(), typefoodDAO.getAllFoodTypes()); // Gọi phương thức không tĩnh từ thể hiện
+//        GridLayoutManager manager = new GridLayoutManager(requireContext(), 5);
+//        recyclerView.setLayoutManager(manager);
+//        recyclerView.setAdapter(food_type_adapter);
 
         foodList = getFoodList();
         food_adapter = new Food_Adapter(getContext(),foodList);
