@@ -1,4 +1,4 @@
-package com.example.myfoodapp.ui.home;
+package com.example.myfoodapp.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,7 +41,7 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
     public void onBindViewHolder(@NonNull FoodHolder holder, int position) {
         Food food = foodList.get(position);
         if (food == null) return;
-        holder.img.setImageResource(food.getImg());
+        //holder.img.setImageBitmap(food.getImage());
         holder.tv_name.setText(food.getName());
         holder.tv_time.setText(food.getTime());
         holder.cardView.setOnClickListener(new View.OnClickListener() {

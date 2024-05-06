@@ -10,14 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentStatisticBinding;
 import com.example.myfoodapp.ui.foodlist.FoodListAdapter;
-import com.example.myfoodapp.ui.home.Food;
-import com.example.myfoodapp.ui.slideshow.MenufoodAdapter;
+import com.example.myfoodapp.model.Food;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,13 +41,13 @@ public class StatisticFragment extends Fragment {
     }
     private List<Food> getList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xao", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xao", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 }

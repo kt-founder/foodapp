@@ -1,4 +1,4 @@
-package com.example.myfoodapp.ui.home;
+package com.example.myfoodapp.model;
 
 import android.os.Build;
 import android.os.Parcel;
@@ -11,10 +11,10 @@ import java.io.Serializable;
 
 public class Food_Type implements Serializable{
     private int id;
-    private byte[] img;
+    private int img;
     private String name;
 
-    public Food_Type(int id, byte[] img, String name) {
+    public Food_Type(int id,int img, String name) {
         this.id = id;
         this.img = img;
         this.name = name;
@@ -28,11 +28,11 @@ public class Food_Type implements Serializable{
         this.id = id;
     }
 
-    public byte[] getImg() {
+    public int getImg() {
         return img;
     }
 
-    public void setImg(byte[] img) {
+    public void setImg(int img) {
         this.img = img;
     }
 

@@ -30,7 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String tbtypefood = "CREATE TABLE typefood (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, "  +
-                "img BLOB," +
+               "img INTEGER," +
                 "name TEXT" +
                 ")";
         db.execSQL(tbtypefood);
@@ -54,32 +54,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     private void insertSampleData(SQLiteDatabase db) {
-        String[] foodNames = {"Bún phở", "Hải Sản", "Thịt Bò", "Thịt gà", "Nộm-Gỏi", "Cháo", "Món Chay",
+        String[] Names = {"Bún phở", "Hải Sản", "Thịt Bò", "Thịt gà", "Nộm-Gỏi", "Cháo", "Món Chay",
                 "Bánh Mì-Xôi", "Cơm", "Món Xào", "Món Kho", "Món Chiên", "Món Tết"};
-        int[] foodImages = {R.drawable.tf_bunpho, R.drawable.tf_haisan, R.drawable.tf_thitbo,
+        int[] Images = {R.drawable.tf_bunpho, R.drawable.tf_haisan, R.drawable.tf_thitbo,
                 R.drawable.tf_thitga, R.drawable.tf_nom, R.drawable.tf_chao,
                 R.drawable.tf_chay, R.drawable.tf_banhmi_xoi, R.drawable.tf_com,
                 R.drawable.tf_xao, R.drawable.tf_kho, R.drawable.tf_monchien,
                 R.drawable.tf_montet};
 
         db.beginTransaction();
-        for (int i = 0; i < foodImages.length; i++) {
+        for (int i = 0; i < Names.length; i++) {
             ContentValues values = new ContentValues();
-            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), foodImages[i]);
-            if (bitmap != null) {
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                values.put("name", foodNames[i]);
-                values.put("img", byteArray);
-                db.insert("typefood", null, values);
-                // Đóng luồng stream sau khi sử dụng
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
+            values.put("name", Names[i]);
+            values.put("img",Images[i] );
+            db.insert("typefood", null, values);
         }
         db.setTransactionSuccessful();
         db.endTransaction();
@@ -88,6 +77,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "onUpgrade: Database upgrade from version " + oldVersion + " to " + newVersion);
+        if(oldVersion!=newVersion){
+            db.execSQL("DROP TABLE IF EXISTS typefood");
+            onCreate(db);
+        }
     }
 
 }

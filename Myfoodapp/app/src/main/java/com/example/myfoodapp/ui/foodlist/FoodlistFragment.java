@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myfoodapp.R;
-import com.example.myfoodapp.ui.home.Food;
-import com.example.myfoodapp.ui.home.Food_Type;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.Food_Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,13 +47,13 @@ public class FoodlistFragment extends Fragment {
     }
     private List<Food> getList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xào", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xào", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 

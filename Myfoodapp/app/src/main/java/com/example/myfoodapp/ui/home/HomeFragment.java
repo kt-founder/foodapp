@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.dal.SQLiteHelper;
 import com.example.myfoodapp.dao.TypefoodDAO;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.Food_Adapter;
+import com.example.myfoodapp.model.Food_Type_Adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +76,8 @@ public class HomeFragment extends Fragment   {
             }
         });
 
+
+
         return root;
     }
 
@@ -95,13 +99,13 @@ public class HomeFragment extends Fragment   {
 
     private List<Food> getFoodList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xÃ o", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xÃ o", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 
