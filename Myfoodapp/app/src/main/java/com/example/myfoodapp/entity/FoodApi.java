@@ -1,6 +1,6 @@
-package com.example.myfoodapp.ui.retrofit;
+package com.example.myfoodapp.entity;
 
-import com.example.myfoodapp.ui.home.Food;
+import com.example.myfoodapp.model.Food;
 
 import java.util.List;
 

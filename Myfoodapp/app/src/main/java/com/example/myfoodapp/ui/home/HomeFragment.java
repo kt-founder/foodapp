@@ -9,13 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
-import com.example.myfoodapp.dal.SQLiteHelper;
-import com.example.myfoodapp.dao.TypefoodDAO;
+
 import com.example.myfoodapp.model.Food;
 import com.example.myfoodapp.model.Food_Adapter;
 import com.example.myfoodapp.model.Food_Type_Adapter;
@@ -32,7 +30,7 @@ public class HomeFragment extends Fragment   {
     private SearchView searchView;
     private List<Food> foodList,li;
     private boolean isSearchViewExpanded = false;
-    private SQLiteHelper dbHelper;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

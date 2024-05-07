@@ -8,18 +8,13 @@ import java.sql.Blob;
 import java.sql.SQLException;
 
 public class Food {
-<<<<<<< HEAD:Myfoodapp/app/src/main/java/com/example/myfoodapp/ui/home/Food.java
+
 
     private int id;
     private String name;
     private String detail;
     private String type;
-=======
-    private  int id;
-    private String name;
 
-    private int img;
->>>>>>> 820c8d1c78b05535643ca59879b917adab18c83f:Myfoodapp/app/src/main/java/com/example/myfoodapp/model/Food.java
     private String time;
     private byte[] image;
     private String video;

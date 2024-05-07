@@ -1,4 +1,4 @@
-package com.example.myfoodapp.ui.retrofit;
+package com.example.myfoodapp.entity;
 
 import com.google.gson.Gson;
 
@@ -13,7 +13,7 @@ public class RetrofitService {
     }
 
     private void initializeRetrofit() {
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.181:9000")
+        retrofit = new Retrofit.Builder().baseUrl("http://192.168.239.1:9000")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }

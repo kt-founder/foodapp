@@ -2,10 +2,7 @@ package com.example.myfoodapp.ui.upload;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,7 +12,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebViewDatabase;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,22 +29,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentUploadBinding;
-import com.example.myfoodapp.ui.home.Food;
-import com.example.myfoodapp.ui.retrofit.FoodApi;
-import com.example.myfoodapp.ui.retrofit.RetrofitService;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.entity.FoodApi;
+import com.example.myfoodapp.entity.RetrofitService;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serial;
-import java.sql.Blob;
-import java.sql.SQLException;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -156,7 +143,7 @@ public class UploadFragment extends Fragment {
             String value3 = inputglucid.getText().toString().trim();
             String value4 = inputXo.getText().toString().trim();
             String value5 = inputCalo.getText().toString().trim();
-            String nutrition = "protid: " + value + " ,lipit: "+value2 + " ,glucid: "+ value3 + " ,chat xo: " + value4 +" ,calo: "+ value5;
+            String nutrition = "protid: " + value + " ,glucid: "+ value3 +" ,lipit: "+value2 +  " ,chat xo: " + value4 +" ,calo: "+ value5;
             food.setNutrition(nutrition.trim());
             // Add text
 

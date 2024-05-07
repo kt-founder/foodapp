@@ -42,21 +42,21 @@ public class FoodController {
 	public List<Food> getAFoods() throws SQLException, IOException{
 		System.out.println(1);
 		List<Food> image = foodDao.getAllFoods();
-        for(Food i:image) {
-        	Blob blob = i.getImage();// Retrieve blob from database
-        	System.out.println(1);
-        	System.out.println(blob);
-	        // Convert blob to byte array
- 
-	       byte[] a = blob.getBytes(1, (int) blob.length());
-
-	        // Convert byte array to base64 string
-	        String base64Data = Base64.getEncoder().encodeToString(a);
-	        BufferedImage im = blobToImage(blob);
-	        i.setBase64(base64Data);
-	        i.setImage(null);
-            
-        }
+//        for(Food i:image) {
+//        	Blob blob = i.getImage();// Retrieve blob from database
+//        	System.out.println(1);
+//        	System.out.println(blob);
+//	        // Convert blob to byte array
+// 
+//	       byte[] a = blob.getBytes(1, (int) blob.length());
+//
+//	        // Convert byte array to base64 string
+//	        String base64Data = Base64.getEncoder().encodeToString(a);
+//	        BufferedImage im = blobToImage(blob);
+//	        i.setBase64(base64Data);
+//	        i.setImage(null);
+//            
+//        }
         return image;
 		
 	}
