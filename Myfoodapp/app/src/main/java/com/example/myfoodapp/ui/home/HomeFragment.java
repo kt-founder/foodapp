@@ -15,11 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
 
-<<<<<<< HEAD
 import com.example.myfoodapp.entity.RetrofitService;
 import com.example.myfoodapp.entity.TypeFoodApi;
-=======
->>>>>>> 03a29132a2ed1aad4f83fb3a93f89ca17189e54b
 import com.example.myfoodapp.model.Food;
 import com.example.myfoodapp.model.Food_Adapter;
 import com.example.myfoodapp.model.Food_Type_Adapter;
@@ -93,7 +90,6 @@ public class HomeFragment extends Fragment   {
     }
 
     private void setupRecyclerView() {
-<<<<<<< HEAD
         RetrofitService retro = new RetrofitService();
 
         TypeFoodApi typeFoodApi = retro.getRetrofit().create(TypeFoodApi.class);
@@ -119,7 +115,7 @@ public class HomeFragment extends Fragment   {
     private void popListView(List<TypeFood> body) {
         food_type_adapter = new Food_Type_Adapter(getContext(),body);
         recyclerView.setAdapter(food_type_adapter);
-=======
+
 //        //dbHelper = new SQLiteHelper(getContext());
 //        TypefoodDAO typefoodDAO = new TypefoodDAO(getContext()); // Tạo một thể hiện của TypefoodDAO
 //        food_type_adapter = new Food_Type_Adapter(getContext(), typefoodDAO.getAllFoodTypes()); // Gọi phương thức không tĩnh từ thể hiện
@@ -133,7 +129,6 @@ public class HomeFragment extends Fragment   {
         manager1.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerSearch.setLayoutManager(manager1);
         recyclerSearch.setAdapter(food_adapter);
->>>>>>> 03a29132a2ed1aad4f83fb3a93f89ca17189e54b
     }
     private void showTypeFoodList(List<TypeFood> typeFoods) {
         // Tạo adapter với danh sách loại thực phẩm
