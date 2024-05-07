@@ -47,7 +47,11 @@ public class FoodController {
 //        	System.out.println(1);
 //        	System.out.println(blob);
 //	        // Convert blob to byte array
+<<<<<<< HEAD
 //
+=======
+// 
+>>>>>>> 03a29132a2ed1aad4f83fb3a93f89ca17189e54b
 //	       byte[] a = blob.getBytes(1, (int) blob.length());
 //
 //	        // Convert byte array to base64 string
@@ -55,7 +59,11 @@ public class FoodController {
 //	        BufferedImage im = blobToImage(blob);
 //	        i.setBase64(base64Data);
 //	        i.setImage(null);
+<<<<<<< HEAD
 //
+=======
+//            
+>>>>>>> 03a29132a2ed1aad4f83fb3a93f89ca17189e54b
 //        }
         return image;
 		
