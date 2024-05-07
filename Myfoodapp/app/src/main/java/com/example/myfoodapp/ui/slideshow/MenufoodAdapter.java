@@ -32,7 +32,7 @@ public class MenufoodAdapter extends RecyclerView.Adapter<MenufoodAdapter.Menufo
     public void onBindViewHolder(@NonNull MenufoodHolder holder, int position) {
         Food food= typeList.get(position);
         if(food==null) return;
-        holder.img.setImageResource(food.getImg());
+        //holder.img.setImageResource(food.getImg());
         holder.tv.setText(food.getName());
     }
 

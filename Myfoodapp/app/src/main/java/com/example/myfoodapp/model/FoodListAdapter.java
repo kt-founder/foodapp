@@ -34,7 +34,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.Foodli
     public void onBindViewHolder(@NonNull FoodlistHolder holder, int position) {
         Food food= typeList.get(position);
         if(food==null) return;
-        holder.img.setImageResource(food.getImg());
+       // holder.img.setImageResource(food.getImg());
         holder.tv.setText(food.getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

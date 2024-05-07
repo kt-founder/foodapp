@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.model.Food;
 import com.example.myfoodapp.model.FoodListAdapter;
-import com.example.myfoodapp.model.Food_Type;
+import com.example.myfoodapp.model.TypeFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class FoodlistFragment extends Fragment {
         // Kiểm tra xem Bundle có tồn tại không và có chứa key "food_type" không
         if (bundle != null && bundle.containsKey("food_type")) {
             // Lấy đối tượng Food_Type từ Bundle
-            Food_Type food_type = bundle.getParcelable("food_type");
+            TypeFood food_type = bundle.getParcelable("food_type");
             tv.setText(food_type.getName());
             // Bây giờ bạn có thể sử dụng đối tượng Food_Type như mong muốn
         }
@@ -48,13 +48,13 @@ public class FoodlistFragment extends Fragment {
     }
     private List<Food> getList() {
         List<Food> list = new ArrayList<>();
-        list.add(new Food(R.drawable.img, "ga tam", "30p"));
-        list.add(new Food(R.drawable.img, "ga chien", "30p"));
-        list.add(new Food(R.drawable.img, "ga xào", "30p"));
-        list.add(new Food(R.drawable.img, "thit lon", "30p"));
-        list.add(new Food(R.drawable.img, "thit bo", "30p"));
-        list.add(new Food(R.drawable.img, "rau xao", "30p"));
-        list.add(new Food(R.drawable.img, "ga teo", "30p"));
+//        list.add(new Food(R.drawable.img, "ga tam", "30p"));
+//        list.add(new Food(R.drawable.img, "ga chien", "30p"));
+//        list.add(new Food(R.drawable.img, "ga xào", "30p"));
+//        list.add(new Food(R.drawable.img, "thit lon", "30p"));
+//        list.add(new Food(R.drawable.img, "thit bo", "30p"));
+//        list.add(new Food(R.drawable.img, "rau xao", "30p"));
+//        list.add(new Food(R.drawable.img, "ga teo", "30p"));
         return list;
     }
 

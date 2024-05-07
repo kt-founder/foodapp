@@ -1,6 +1,8 @@
 package com.example.myfoodapp.model;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +21,16 @@ import com.example.myfoodapp.R;
 import java.util.List;
 
 public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.FoodTypeHolder>{
-    private List<Food_Type> typeList;
+    private List<TypeFood> typeList;
     private Context context;
 
-    public Food_Type_Adapter(Context context,List<Food_Type> typeList) {
+    public Food_Type_Adapter(Context context,List<TypeFood> typeList) {
         this.typeList = typeList;
         this.context = context;
+    }
+
+    public Food_Type_Adapter(List<TypeFood> body) {
+        this.typeList= body;
     }
 
     @NonNull
@@ -36,10 +42,13 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
 
     @Override
     public void onBindViewHolder(@NonNull FoodTypeHolder holder, int position) {
-        Food_Type food_type= typeList.get(position);
+        TypeFood food_type= typeList.get(position);
         if(food_type==null) return;
+
          //Chuyển đổi mảng byte thành đối tượng Bitmap
-        holder.img.setImageResource(food_type.getImg());
+        byte[] bytes = food_type.getImg();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.img.setImageBitmap(bitmap);
         holder.tv.setText(food_type.getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

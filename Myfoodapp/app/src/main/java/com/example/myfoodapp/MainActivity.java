@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 
+import com.example.myfoodapp.model.Food;
 import com.example.myfoodapp.ui.setting.SettingFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
