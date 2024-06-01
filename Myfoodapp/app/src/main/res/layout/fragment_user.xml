@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ui.user.UserFragment"
+
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/anhdep"
+        android:scaleType="fitXY"
+        />
+    <TextView
+        android:id="@+id/tv_tienIch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/user"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_fix"
+                android:layout_marginLeft="10dp"
+                />
+            <Button
+                android:id="@+id/user_tk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đổi mật khẩu"
+                android:backgroundTint="@color/Xanhblue"
+                android:layout_marginRight="20dp"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_menu_upload"
+                android:layout_marginLeft="10dp"
+                />
+            <Button
+                android:id="@+id/user_congthuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ĐĂNG TẢI CÔNG THỨC"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/Xanhblue"
+                android:gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_heart_black"
+                android:layout_marginLeft="10dp"
+                />
+        <Button
+            android:id="@+id/user_thich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Món ăn yêu thích"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/Xanhblue"
+            android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_menu_gallery"
+                android:layout_marginLeft="10dp"
+                />
+        <Button
+            android:id="@+id/user_thucdon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thực đơn"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/Xanhblue"
+            android:gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/admin"
+        android:backgroundTint="@color/Xanhblue"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_menu_slideshow"
+                android:layout_marginLeft="10dp"
+                />
+        <Button
+            android:id="@+id/admin_quanly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý công thức"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/Xanhblue"
+            android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@android:drawable/ic_lock_idle_alarm"
+                android:layout_marginLeft="10dp"
+                />
+        <Button
+            android:id="@+id/admin_thongke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thống kê"
+            android:backgroundTint="@color/Xanhblue"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

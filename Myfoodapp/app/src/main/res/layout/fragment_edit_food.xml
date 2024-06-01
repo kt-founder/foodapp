@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/UploadCt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.upload.UploadFragment"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng tải công thức của riêng bạn!"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:textColor="#FF3300"
+        />
+    <TextView
+        android:id="@+id/thongbao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:textColor="#FF3333"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Nhập Tên món ăn"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+
+                />
+            <EditText
+                android:id="@+id/input_tenmon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập tên món ăn"
+                android:textSize="13dp"
+                android:textStyle="italic"
+
+                />
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Giới thiệu món ăn"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/input_mota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập thông tin món ăn"
+                android:textSize="13dp"
+                android:textStyle="italic"
+                />
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Thời gian nấu"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <Spinner
+                android:id="@+id/sp_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:entries="@array/type"/>
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Loại đồ ăn"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rev_ft_addfood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Nguyên liệu món ăn"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/input_nguyenlieu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập thông tin nguyên liệu"
+                android:textSize="13dp"
+                android:textStyle="italic"
+                />
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Cách làm"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/input_cachlam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập các bước "
+                android:textSize="13dp"
+                android:textStyle="italic"
+                />
+
+
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nThông tin dinh dưỡng:"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất đạm"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:id="@+id/chatdam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13dp"
+                        android:hint="Nhập"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất đường bột"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:id="@+id/chatduong"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13dp"
+                        android:hint="Nhập"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất béo"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:id="@+id/chatbeo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13dp"
+                        android:hint="Nhập"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất xơ"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:id="@+id/chatxo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13dp"
+                        android:hint="Nhập"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Calo"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:id="@+id/calo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13dp"
+                        android:hint="Nhập"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nThêm hình ảnh cho món ăn:"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="237dp"
+                    android:layout_height="199dp"
+                    android:layout_marginStart="52dp"
+                    android:src="@drawable/no_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageButton
+                    android:id="@+id/bt_cam"
+                    android:layout_width="54dp"
+                    android:layout_height="57dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_7"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.112" />
+
+                <ImageButton
+                    android:id="@+id/bt_file"
+                    android:layout_width="54dp"
+                    android:layout_height="57dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/file"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.875"
+                    app:layout_constraintStart_toEndOf="@+id/img"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.112" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nThêm video(Nếu có):"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/input_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập link video  "
+                android:textSize="13dp"
+                android:textStyle="italic"
+                />
+            <Button
+                android:id="@+id/bt_Upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hoàn tất"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Sau khi nhấn hoàn tất công thức của bạn sẽ được \nkiểm duyệt"
+                android:textStyle="italic"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

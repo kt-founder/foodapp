@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.myfoodapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.myfoodapp.ui.detail.FoodDetailFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_upload_congThuc"
+        android:name="com.example.myfoodapp.ui.upload.UploadFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_upload" >
+        <action
+            android:id="@+id/action_nav_upload_congThuc_to_mobile_navigation"
+            app:destination="@id/mobile_navigation" />
+        <action
+            android:id="@+id/action_nav_upload_congThuc_pop"
+            app:popUpTo="@id/nav_upload_congThuc"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_upload_congThuc_to_nav_user"
+            app:destination="@id/nav_user" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_DSYeuThich"
+        android:name="com.example.myfoodapp.ui.saved.SavedFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_daluu" >
+        <action
+            android:id="@+id/action_nav_DSYeuThich_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_nutri"
+        android:name="com.example.myfoodapp.ui.nutri.CaloFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_calo" >
+        <action
+            android:id="@+id/action_nav_nutri_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_video"
+        android:name="com.example.myfoodapp.ui.video.VideoFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/nav_xemct"
+        android:name="com.example.myfoodapp.ui.xemct.XemCTFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_xemct" >
+        <action
+            android:id="@+id/action_nav_xemct_to_nav_video"
+            app:destination="@id/nav_video" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.myfoodapp.ui.share.ShareFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/nav_timer"
+        android:name="com.example.myfoodapp.ui.timer.TimerFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_timer" >
+        <action
+            android:id="@+id/action_nav_timer_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_change"
+        android:name="com.example.myfoodapp.ui.change.ChangeFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_change" >
+        <action
+            android:id="@+id/action_nav_change_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_shopping"
+        android:name="com.example.myfoodapp.ui.shopping.ShoppingFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_shopping" >
+        <action
+            android:id="@+id/action_nav_shopping_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.myfoodapp.ui.setting.SettingFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_nav_setting_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_thucdon"
+        android:name="com.example.myfoodapp.ui.slideshow.SlideshowFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_slide_show" />
+    <fragment
+        android:id="@+id/nav_buy"
+        android:name="com.example.myfoodapp.ui.buy.BuyMeterialFragment"
+        android:label="Công thức đã lưu"
+        tools:layout="@layout/fragment_buy_meterial" />
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="com.example.myfoodapp.ui.user.UserFragment"
+        android:label="Tiện tích người dùng"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_nav_user_to_mobile_navigation"
+            app:destination="@id/mobile_navigation" />
+        <action
+            android:id="@+id/action_nav_user_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_listfood"
+        android:name="com.example.myfoodapp.ui.foodlist.FoodlistFragment"
+        android:label="Danh sách món ăn "
+        tools:layout="@layout/fragment_listfood" >
+        <action
+            android:id="@+id/action_homeFragment_to_foodlistFragment"
+            app:destination="@id/nav_listfood"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_listfood_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_listfood_to_nav_home2"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_admin_quanly"
+        android:name="com.example.myfoodapp.ui.admin_quanlyFragment"
+        android:label="Quản lý "
+        tools:layout="@layout/fragment_admin_quanly" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myfoodapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.myfoodapp.ui.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_editfood"
+        android:name="com.example.myfoodapp.ui.EditFoodFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_edit_food" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/nav_admin_quanly" />
+    </fragment>
+</navigation>

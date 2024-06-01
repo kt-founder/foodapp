@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Thongtinmonan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.detail.FoodDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="2dp">
+
+        <Button
+            android:id="@+id/bt_Detail"
+            android:backgroundTint="@color/material_dynamic_primary70"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:textStyle=""
+            android:text="Thông tin \n món ăn"
+            />
+
+        <Button
+            android:id="@+id/bt_nutri"
+            android:backgroundTint="@color/material_dynamic_primary70"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:text="Giá trị\n dinh dưỡng"
+            android:textSize="9dp" />
+
+        <Button
+            android:id="@+id/bt_video"
+            android:backgroundTint="@color/material_dynamic_primary70"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:text="Nấu ăn với\n video" />
+        <ImageButton
+            android:id="@+id/im_yeuthich"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart_black">
+
+        </ImageButton>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="83dp">
+
+        <ImageView
+            android:id="@+id/imageViewMonAN"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Dinh dưỡng có trong món: "
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Đay là một món ăn bổ dưỡng với rất nhiều loại vitamin, và cung cấp năng lượng cho bạn, Sau đây là một số "
+            >
+
+        </TextView>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Chất đường"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/glucid"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="10g"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Chất béo"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/lipit"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="10g"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Chất đạm"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/protid"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="10g"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Chất xơ"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/chatxo"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="10g"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="calo"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/calo"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="10g"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
