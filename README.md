@@ -73,8 +73,11 @@
 - Giao diện video nấu ăn.
   ![image](https://github.com/kt-founder/foodapp/assets/113308479/06a1fefc-1d51-469f-a467-8c4402fb5d13)
 - Giao diện đăng tải công thức.
-  ![image](https://github.com/kt-founder/foodapp/assets/113308479/d0e74467-c645-49c9-a5fb-7019061b4764)
+  
+ ![image](https://github.com/kt-founder/foodapp/assets/113308479/140b5754-db80-4ba5-bd63-b853c77cc8c2)
+
 - Giao diện công thức yêu thích.
+  
 ![image](https://github.com/kt-founder/foodapp/assets/113308479/baa9123d-5ecb-43cc-9303-d692df7329f9)
 ## Cài Đặt và Kết Quả
 
