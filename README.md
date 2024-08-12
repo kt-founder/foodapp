@@ -67,10 +67,13 @@
   ![image](https://github.com/kt-founder/foodapp/assets/113308479/6915b34b-9825-4e38-8b14-206d2cbc62aa)
 
 - Giao diện đăng nhập và menu.
+  
   ![image](https://github.com/kt-founder/foodapp/assets/113308479/e5fbd19b-1373-4be7-aec0-624b29fd903d)
 - Giao diện xem công thức và giá trị dinh dưỡng.
+  
   ![image](https://github.com/kt-founder/foodapp/assets/113308479/eeebf44e-df8f-4405-bb95-5d10a3226800)
 - Giao diện video nấu ăn.
+  
   ![image](https://github.com/kt-founder/foodapp/assets/113308479/06a1fefc-1d51-469f-a467-8c4402fb5d13)
 - Giao diện đăng tải công thức.
   
