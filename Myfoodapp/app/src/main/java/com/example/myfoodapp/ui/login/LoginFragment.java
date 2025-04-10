@@ -3,7 +3,9 @@ package com.example.myfoodapp.ui.login;
 import static androidx.core.app.ActivityCompat.invalidateOptionsMenu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -33,6 +35,7 @@ public class LoginFragment extends Fragment {
 
     private EditText etUsername;
     private EditText etPassword;
+     // Request code for Google SignIn
 
     @Nullable
     @Override
@@ -52,6 +55,24 @@ public class LoginFragment extends Fragment {
         btnRegister.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.registerFragment);
         });
+        com.google.android.gms.common.SignInButton btnGoogleSignIn = view.findViewById(R.id.btnGoogleSignIn);
+        btnGoogleSignIn.setOnClickListener(v -> {
+            String url = "https://accounts.google.com/";
+            Uri webpage = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+
+            // Kiểm tra nếu có ứng dụng có thể mở liên kết này
+            if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                // Hiển thị thông báo lỗi hoặc xử lý thay thế
+                webpage = Uri.parse("https://accounts.google.com/" );
+                intent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(intent);
+                System.out.println("Không có ứng dụng để mở URL này!");
+            }
+        });
+        //
 
         return view;
     }

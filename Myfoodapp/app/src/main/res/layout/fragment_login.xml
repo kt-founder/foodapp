@@ -39,4 +39,9 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Xanhblue"
         android:text="Register" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
 </LinearLayout>
