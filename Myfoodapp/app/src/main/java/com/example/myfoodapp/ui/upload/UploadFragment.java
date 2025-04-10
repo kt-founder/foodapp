@@ -35,8 +35,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentUploadBinding;
+import com.example.myfoodapp.model.TypeFoodResponseDto;
 import com.example.myfoodapp.server.TypeFoodApi;
-import com.example.myfoodapp.model.FT_AddFood_Adapter;
+import com.example.myfoodapp.adapter.FT_AddFood_Adapter;
 import com.example.myfoodapp.model.Food;
 import com.example.myfoodapp.server.FoodApi;
 import com.example.myfoodapp.server.RetrofitService;
@@ -72,7 +73,7 @@ public class UploadFragment extends Fragment {
     private ImageButton btcam,btfile;
     private Button btthem;
     private RecyclerView recyclerView;
-    private List<TypeFood> typeFoodList = new ArrayList<>();
+    private List<TypeFoodResponseDto> typeFoodList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
@@ -155,8 +156,6 @@ public class UploadFragment extends Fragment {
 
             typeFoodList = adapter.getTypeFoods();
 
-
-
             food.setName(ten);
             food.setTime(time);
             food.setDetail(mota);
@@ -171,18 +170,24 @@ public class UploadFragment extends Fragment {
             FoodApi foodApi1 =retrofit.getRetrofit().create(FoodApi.class);
             //Set<Food> foodlink = new HashSet(typeFoodList);
             Set<TypeFood> typefoods1 = food.getTypefoods();
-            typefoods1.addAll(typeFoodList);
+            for(TypeFoodResponseDto typeFood : typeFoodList){
+                TypeFood typeFood1 = new TypeFood();
+                typeFood1.setId(typeFood.getId());
+                typeFood1.setName(typeFood.getName());
+                typeFood1.setImg(typeFood.getImageBase64());
+                typefoods1.add(typeFood1);
+            }
             food.setTypefoods(typefoods1);
             foodApi1.addFoods(food).enqueue(new Callback<Food>() {
                 @Override
                 public void onResponse(Call<Food> call, Response<Food> response) {
-
+                    Toast.makeText(getContext(),"Them thanh cong",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.nav_admin_quanly);
                 }
 
                 @Override
                 public void onFailure(Call<Food> call, Throwable throwable) {
-                    Toast.makeText(getContext(),"Them thanh cong",Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.nav_upload_congThuc);
+
                 }
             });
         });
@@ -193,10 +198,10 @@ public class UploadFragment extends Fragment {
         RetrofitService retrofitService = new RetrofitService();
         TypeFoodApi typeFoodApi = retrofitService.getRetrofit().create(TypeFoodApi.class);
 
-        typeFoodApi.getAllTypeFood().enqueue(new Callback<List<TypeFood>>() {
+        typeFoodApi.getAllTypeFood1().enqueue(new Callback<List<TypeFoodResponseDto>>() {
             @Override
-            public void onResponse(Call<List<TypeFood>> call, Response<List<TypeFood>> response) {
-                Toast.makeText(getContext(), "aa", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<List<TypeFoodResponseDto>> call, Response<List<TypeFoodResponseDto>> response) {
+//                Toast.makeText(getContext(), "aa", Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful() && response.body() != null) {
 //                    showTypeFoodList(response.body());
                     adapter = new FT_AddFood_Adapter(response.body(), getContext());
@@ -208,7 +213,7 @@ public class UploadFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<TypeFood>> call, Throwable throwable) {
+            public void onFailure(Call<List<TypeFoodResponseDto>> call, Throwable throwable) {
                 Log.d("fa",throwable.toString());
             }
         });

@@ -1,4 +1,4 @@
-package com.example.myfoodapp.model;
+package com.example.myfoodapp.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,20 +17,21 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
+import com.example.myfoodapp.model.TypeFoodResponseDto;
 
 import java.util.Base64;
 import java.util.List;
 
 public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.FoodTypeHolder>{
-    private List<TypeFood> typeList;
+    private List<TypeFoodResponseDto> typeList;
     private Context context;
 
-    public Food_Type_Adapter(Context context,List<TypeFood> typeList) {
+    public Food_Type_Adapter(Context context,List<TypeFoodResponseDto> typeList) {
         this.typeList = typeList;
         this.context = context;
     }
 
-    public Food_Type_Adapter(List<TypeFood> body) {
+    public Food_Type_Adapter(List<TypeFoodResponseDto> body) {
         this.typeList= body;
     }
 
@@ -43,13 +44,13 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
 
     @Override
     public void onBindViewHolder(@NonNull FoodTypeHolder holder, int position) {
-        TypeFood food_type= typeList.get(position);
+        TypeFoodResponseDto food_type= typeList.get(position);
         if(food_type==null) return;
 
         //Chuyển đổi mảng byte thành đối tượng Bitmap
         byte[] bytes = new byte[0];
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            bytes = Base64.getDecoder().decode(food_type.getImg().getBytes());
+            bytes = Base64.getDecoder().decode(food_type.getImageBase64().getBytes());
         }
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         holder.img.setImageBitmap(bitmap);
@@ -58,10 +59,10 @@ public class Food_Type_Adapter extends RecyclerView.Adapter<Food_Type_Adapter.Fo
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("TF",  food_type);
+                bundle.putInt("type_food_id", food_type.getId());  // Chỉ truyền ID
 
-                // Sử dụng Navigation Component để chuyển đến Fragment mới và truyền dữ liệu
-                Navigation.findNavController(v).navigate(R.id.nav_listfood,bundle);
+                // Dùng Navigation Component để chuyển đến Fragment mới và truyền dữ liệu
+                Navigation.findNavController(v).navigate(R.id.nav_listfood, bundle);
             }
         });
 

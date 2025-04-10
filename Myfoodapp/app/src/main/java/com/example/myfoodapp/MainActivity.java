@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Hỗ trợ liên hệ: 0948138322", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Hỗ trợ liên hệ: 0987654322", Snackbar.LENGTH_LONG)
                         .setAction("Action", null)
                         .setAnchorView(R.id.fab).show();
 

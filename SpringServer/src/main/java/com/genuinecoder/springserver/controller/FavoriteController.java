@@ -1,40 +1,39 @@
 package com.genuinecoder.springserver.controller;
 
-import java.util.List;
-
+import com.genuinecoder.springserver.dto.FavoritesDto;
+import com.genuinecoder.springserver.model.Favorites;
+import com.genuinecoder.springserver.service.FavoriteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.genuinecoder.springserver.model.employee.FavoriteDao;
-import com.genuinecoder.springserver.model.employee.Favorites;
+import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@RequestMapping("/api/favorites")
 public class FavoriteController {
 
 	@Autowired
 	private FavoriteDao favoriteDao;
-	
-	@GetMapping("/getFavorite/")
-	public List<Favorites> getByUserId(@RequestParam(value = "id", required = false) int id){
-		return favoriteDao.findByUserId(id);
+
+	// Lấy danh sách yêu thích của người dùng, bao gồm tên và ảnh món ăn
+	@GetMapping("/user/{userId}")
+	public List<FavoritesDto> getFavoritesByUserId(@PathVariable int userId) {
+		return favoriteDao.findByUserId(userId);
 	}
-	@PostMapping("/addFavorite")
-	public ResponseEntity<String> addFavo(@RequestBody Favorites fv) {
-		favoriteDao.addFavorite(fv);
-		return ResponseEntity.ok("Them thanh cong mon an yeu thich");
+
+	// Thêm món ăn vào danh sách yêu thích
+	// Thêm món ăn vào danh sách yêu thích
+	@PostMapping
+	public ResponseEntity<Void> addFavorite(@RequestBody Favorites favorites) {
+		favoriteDao.addFavorite(favorites);
+		return ResponseEntity.status(201).build(); // Trả về HTTP 201 Created
 	}
-	@PostMapping("/Favorite/")
-    public ResponseEntity<String> removeFavorite(@RequestBody Favorites favorites) {
-		favoriteDao.deleteFavorite(favorites);	
-        return ResponseEntity.ok("Xoa thanh cong");
-    }
+
+	// Xóa món ăn khỏi danh sách yêu thích
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteFavorite(@PathVariable int id) {
+		favoriteDao.deleteFavorite(id);
+		return ResponseEntity.status(200).build(); // Trả về HTTP 200 OK
+	}
 }

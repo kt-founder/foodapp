@@ -18,11 +18,6 @@ import com.example.myfoodapp.R;
 
 public class SettingFragment extends Fragment {
 
-    private SettingViewModel mViewModel;
-
-    public static SettingFragment newInstance() {
-        return new SettingFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,11 +36,5 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

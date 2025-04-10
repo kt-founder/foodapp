@@ -22,11 +22,6 @@ import com.example.myfoodapp.R;
 
 public class ShoppingFragment extends Fragment {
 
-    private ShoppingViewModel mViewModel;
-
-    public static ShoppingFragment newInstance() {
-        return new ShoppingFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

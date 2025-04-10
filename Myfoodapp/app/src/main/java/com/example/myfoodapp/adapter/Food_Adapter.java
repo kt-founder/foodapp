@@ -1,10 +1,9 @@
-package com.example.myfoodapp.model;
+package com.example.myfoodapp.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +18,19 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfoodapp.R;
+import com.example.myfoodapp.model.Food;
+import com.example.myfoodapp.model.FoodDto;
 
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> implements Filterable {
-    private List<Food> foodList;
-    private List<Food> mfoodList;
+    private List<FoodDto> foodList;  // Danh sách hiển thị trong RecyclerView
+    private List<FoodDto> mfoodList; // Danh sách gốc không thay đổi
     private Context context;
 
-    public Food_Adapter(Context context, List<Food> foodList) {
+    public Food_Adapter(Context context, List<FoodDto> foodList) {
         this.foodList = foodList;
         this.mfoodList = new ArrayList<>(foodList); // Sao chép danh sách ban đầu
         this.context = context;
@@ -44,23 +45,30 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull FoodHolder holder, int position) {
-        Food food = foodList.get(position);
+        FoodDto food = foodList.get(position);
         if (food == null) return;
-        //holder.img.setImageBitmap(food.getImage());
+
+        // Hiển thị tên món ăn và thời gian
         holder.tv_name.setText(food.getName());
         holder.tv_tgian.setText(food.getTime());
-        byte[] bytes = new byte[0];
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            bytes = Base64.getDecoder().decode(food.getImage().getBytes());
+
+        // Chuyển đổi ảnh từ Base64 thành Bitmap
+        if (food.getImageBase64() != null && !food.getImageBase64().isEmpty()) {
+            byte[] bytes = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                bytes = Base64.getDecoder().decode(food.getImageBase64());
+            }
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            holder.img.setImageBitmap(bitmap);
         }
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        holder.img.setImageBitmap(bitmap);
+
+        // Xử lý khi người dùng click vào một món ăn
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("foodItem",food);
-                Navigation.findNavController(v).navigate(R.id.nav_gallery,bundle);
+                bundle.putInt("foodId", food.getId());
+                Navigation.findNavController(v).navigate(R.id.nav_gallery, bundle);
             }
         });
     }
@@ -91,19 +99,23 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String strSearch = charSequence.toString().toLowerCase().trim();
+
+                // Nếu không có tìm kiếm, phục hồi danh sách gốc
                 if (strSearch.isEmpty()) {
                     foodList.clear();
                     foodList.addAll(mfoodList); // Khôi phục danh sách ban đầu
                 } else {
-                    List<Food> filteredList = new ArrayList<>();
-                    for (Food food : mfoodList) {
-                        if (food.getName().toLowerCase().contains(strSearch)) {
+                    List<FoodDto> filteredList = new ArrayList<>();
+                    for (FoodDto food : mfoodList) {
+                        // Kiểm tra tên món ăn có chứa từ khóa tìm kiếm
+                        if (food.getName() != null && food.getName().toLowerCase().contains(strSearch)) {
                             filteredList.add(food);
                         }
                     }
                     foodList.clear();
                     foodList.addAll(filteredList);
                 }
+
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = foodList;
                 return filterResults;
@@ -111,8 +123,13 @@ public class Food_Adapter extends RecyclerView.Adapter<Food_Adapter.FoodHolder> 
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                notifyDataSetChanged();
+                // Cập nhật UI sau khi lọc
+                if (filterResults.values != null) {
+                    foodList = (List<FoodDto>) filterResults.values;
+                    notifyDataSetChanged();
+                }
             }
         };
     }
 }
+

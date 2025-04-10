@@ -1,15 +1,8 @@
 package com.genuinecoder.springserver;
 
-import com.genuinecoder.springserver.model.employee.Food;
-import com.genuinecoder.springserver.model.employee.FoodDao;
+import com.genuinecoder.springserver.service.FoodDao;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.Base64;
-import java.util.List;
 
 import javax.sql.rowset.serial.SerialException;
 

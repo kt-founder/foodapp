@@ -17,10 +17,11 @@
     <TextView
         android:id="@+id/tv_tienIch"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="15dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/teal_700"
+        android:text="Chức năng của người dùng:"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,15 +106,6 @@
             android:backgroundTint="@color/Xanhblue"
             android:gravity="center"/>
         </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/admin"
-        android:backgroundTint="@color/Xanhblue"
-        android:layout_marginTop="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,39 +116,16 @@
                 android:src="@drawable/ic_menu_slideshow"
                 android:layout_marginLeft="10dp"
                 />
-        <Button
-            android:id="@+id/admin_quanly"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Quản lý công thức"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/Xanhblue"
-            android:gravity="center"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@android:drawable/ic_lock_idle_alarm"
-                android:layout_marginLeft="10dp"
-                />
-        <Button
-            android:id="@+id/admin_thongke"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thống kê"
-            android:backgroundTint="@color/Xanhblue"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            />
+            <Button
+                android:id="@+id/admin_quanly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quản lý công thức"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/Xanhblue"
+                android:gravity="center"/>
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>

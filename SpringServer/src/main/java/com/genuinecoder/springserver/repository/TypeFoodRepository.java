@@ -1,7 +1,7 @@
-package com.genuinecoder.springserver.model.employee;
+package com.genuinecoder.springserver.repository;
 
+import com.genuinecoder.springserver.model.TypeFood;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 public interface TypeFoodRepository extends JpaRepository<TypeFood, Integer> {
 }

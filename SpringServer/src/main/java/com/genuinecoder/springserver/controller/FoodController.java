@@ -1,67 +1,65 @@
 package com.genuinecoder.springserver.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.util.Base64;
-import java.util.List;
-
-import com.genuinecoder.springserver.model.employee.TypeFood;
-import com.genuinecoder.springserver.model.employee.TypeFoodDAO;
+import com.genuinecoder.springserver.dto.FoodResponseDto;
+import com.genuinecoder.springserver.model.Food;
+import com.genuinecoder.springserver.service.FoodDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.genuinecoder.springserver.model.employee.Food;
-import com.genuinecoder.springserver.model.employee.FoodDao;
-import com.mysql.cj.exceptions.ExceptionInterceptor;
+import java.util.List;
+import java.util.Optional;
 
-import javax.imageio.ImageIO;
-import javax.persistence.Lob;
 @RestController
-@CrossOrigin(value = "*")
+@RequestMapping("/api/food")
 public class FoodController {
-	
+
 	@Autowired
 	private FoodDao foodDao;
-	@Autowired
-	private TypeFoodDAO typeFoodDAO;
-	
-	public static BufferedImage blobToImage(Blob blob) throws IOException, SQLException {
-        // Đọc dữ liệu từ Blob
-        byte[] imageData = blob.getBytes(1, (int) blob.length());
 
-        // Tạo một ByteArrayInputStream từ dữ liệu Blob
-        ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
-
-        // Đọc ảnh từ ByteArrayInputStream
-        BufferedImage image = ImageIO.read(bais);
-
-        return image;
-    }
-	@GetMapping("/food/get-all")
-	public List<Food> getAllFoods() {
+	// Lấy tất cả món ăn và trả về DTO
+	@GetMapping
+	public List<FoodResponseDto> getAllFood() {
 		return foodDao.getAllFood();
 	}
-	
-	@PostMapping("/food/addFood")
-	public ResponseEntity<String> addFoods(@RequestBody Food food) {
-		Food savedFood = foodDao.save(food);
-		
-		return ResponseEntity.ok("Food added successfully.");
-
+	@GetMapping("/auth/{id}")
+	public List<FoodResponseDto> getAllFoodByAuthId(@PathVariable int id) {
+		return foodDao.getAllFoodByUserId(id);
 	}
-	@PostMapping("food/delete/{id}")
-	public ResponseEntity<String> deleteFoodById(@PathVariable int id) {
+
+	// Thêm món ăn mới
+	@PostMapping
+	public Food saveFood(@RequestBody Food food) {
+		return foodDao.save(food);
+	}
+
+	// Cập nhật món ăn
+	@PutMapping("/{id}")
+	public ResponseEntity<String> updateFood(@PathVariable Integer id, @RequestBody Food updatedFood) {
+		return foodDao.update(id, updatedFood);
+	}
+	//Laay Mon An
+	@GetMapping("/{id}")
+	public FoodResponseDto getFoodById(@PathVariable Integer id) {
+		return foodDao.getFoodById(id);
+	}
+
+	// Xóa món ăn
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteFood(@PathVariable int id) {
 		foodDao.deleteFoodById(id);
-		return ResponseEntity.ok("Food deleted successfully.");
+		return ResponseEntity.status(200).build();
 	}
 
+	// Lấy món ăn theo loại thực phẩm (TypeFood)
+	@GetMapping("/type/{typeFoodId}")
+	public List<FoodResponseDto> getFoodByTypeFood(@PathVariable int typeFoodId) {
+		return foodDao.getFoodByTypeFood(typeFoodId);
+	}
 
-	@PutMapping("/food/update/{id}")
-	public ResponseEntity<String> updateFood(@PathVariable int id, @RequestBody Food food) {
-		return foodDao.update(id, food);
+	// Tìm kiếm món ăn theo tên
+	@GetMapping("/search")
+	public List<FoodResponseDto> searchFoodByName(@RequestParam String name) {
+		return foodDao.searchFoodByName(name);
 	}
 }

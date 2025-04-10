@@ -13,11 +13,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="20dp"
+
         android:textColor="#DD0000"
-        android:text="Danh sách các món ăn thuộc loại;" />
+        android:text="Danh sách các món ăn thuộc loại:" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_listfood"
         android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>

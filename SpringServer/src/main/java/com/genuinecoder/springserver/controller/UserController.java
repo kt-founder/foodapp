@@ -1,39 +1,73 @@
 package com.genuinecoder.springserver.controller;
 
-import java.util.Optional;
-
+import com.genuinecoder.springserver.dto.ChangePasswordRequest;
+import com.genuinecoder.springserver.model.User;
+import com.genuinecoder.springserver.service.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.*;
 
-import com.genuinecoder.springserver.model.employee.Food;
-import com.genuinecoder.springserver.model.employee.User;
-import com.genuinecoder.springserver.model.employee.UserDAO;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@CrossOrigin("*")
+@RequestMapping("/api/users")
 public class UserController {
-	@Autowired
-	private UserDAO userDAO;
-	
-	@PostMapping("/register")
-	public ResponseEntity<String> addUser(@RequestBody User user) {
-		User newUser = userDAO.registerUser(user);
-		return ResponseEntity.ok("User added successfully.");
-	}
-	
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User loginDetails) {
-        User user = userDAO.findByUsername(loginDetails.getUsername());
-        if (user != null && user.getPassword().equals(loginDetails.getPassword())) {
-            return ResponseEntity.ok(new User(user.getId(),user.getUsername(),user.getRole()));
+    @Autowired
+    private UserDAO userDAO;
+
+    // Đăng ký người dùng mới
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userDAO.registerUser(user); // Lưu người dùng với mật khẩu đã mã hóa
+    }
+    // Đăng ký người dùng mới
+    @PostMapping("/add")
+    public User add(@RequestBody User user) {
+        return userDAO.addUser(user); // Lưu người dùng với mật khẩu đã mã hóa
+    }
+
+    // Đổi mật khẩu người dùng
+    @PutMapping("/{id}/password")
+    public ResponseEntity<String> updatePassword(
+            @PathVariable int id,
+            @RequestBody ChangePasswordRequest request) {
+
+        // Kiểm tra mật khẩu cũ
+        boolean isOldPasswordValid = userDAO.checkOldPassword(id, request.getOldPassword());
+        if (!isOldPasswordValid) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mật khẩu cũ không đúng.");
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+
+        // Tiến hành thay đổi mật khẩu nếu mật khẩu cũ đúng
+        User updatedUser = userDAO.updatePassword(id, request.getNewPassword());
+        return ResponseEntity.ok("Mật khẩu đã được thay đổi.");
+    }
+
+
+
+    // Lấy tất cả người dùng
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers(); // Lấy tất cả người dùng
+    }
+
+    // Lấy người dùng theo ID
+    @GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable int id) {
+        return userDAO.getUserById(id); // Lấy người dùng theo ID
+    }
+
+    // Đăng nhập người dùng
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        User foundUser = userDAO.findByUsername(user.getUsername());
+        if (foundUser != null && BCrypt.checkpw(user.getPassword(), foundUser.getPassword())) {
+            return ResponseEntity.ok(foundUser);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username hoặc mật khẩu không đúng");
     }
 }

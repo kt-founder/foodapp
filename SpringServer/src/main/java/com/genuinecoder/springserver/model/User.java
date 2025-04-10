@@ -1,15 +1,20 @@
-package com.genuinecoder.springserver.model.employee;
+package com.genuinecoder.springserver.model;
 
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -23,7 +28,7 @@ public class User {
 		super();
 	}
 
-	public User(Long id, String username, String password, String role) {
+	public User(int id, String username, String password, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -31,18 +36,18 @@ public class User {
 		this.role = role;
 	}
 
-	public User(Long id, String username, String role) {
+	public User(int id, String username, String role) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.role = role;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -69,8 +74,4 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	
-    
-    // Getters and setters
 }

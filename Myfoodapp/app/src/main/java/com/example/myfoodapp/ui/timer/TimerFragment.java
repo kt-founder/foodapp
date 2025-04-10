@@ -23,7 +23,6 @@ import com.example.myfoodapp.databinding.FragmentTimerBinding;
 
 public class TimerFragment extends Fragment {
 
-    private TimerViewModel mViewModel;
     private FragmentTimerBinding binding;
     private Button btnSet;
     private TextView tvCountdown;

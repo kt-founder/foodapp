@@ -1,13 +1,6 @@
 package com.example.myfoodapp.ui.foodlist;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,88 +8,112 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myfoodapp.R;
 import com.example.myfoodapp.databinding.FragmentListfoodBinding;
-import com.example.myfoodapp.databinding.FragmentUploadBinding;
-import com.example.myfoodapp.model.Food;
-import com.example.myfoodapp.model.FoodListAdapter;
-import com.example.myfoodapp.model.Food_Adapter;
+import com.example.myfoodapp.model.FoodItemDto;
+import com.example.myfoodapp.adapter.FoodListAdapter;
 import com.example.myfoodapp.model.TypeFood;
+import com.example.myfoodapp.model.TypeFoodResponseDto;
 import com.example.myfoodapp.server.FoodApi;
 import com.example.myfoodapp.server.RetrofitService;
+import com.example.myfoodapp.server.TypeFoodApi;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FoodlistFragment extends Fragment {
+
     private FragmentListfoodBinding binding;
     private RecyclerView recyclerView;
     private TextView tv;
     private FoodListAdapter adapter;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentListfoodBinding.inflate(inflater,container,false);
-        View view =binding.getRoot();
+        binding = FragmentListfoodBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // Lấy dữ liệu từ Bundle
         Bundle bundle = getArguments();
-        int tf_id = 0;
+        int typeFoodId = 0;
         if (bundle != null) {
-            // Lấy dữ liệu từ Bundle
-            TypeFood foodType = (TypeFood) bundle.getSerializable("TF");
-            tv = binding.tv;
-            // Kiểm tra dữ liệu
-            if (foodType != null) {
-                tv.setText("Danh sách các món: "+foodType.getName());
-                tf_id=foodType.getId();
-            }
+            // Lấy ID từ bundle
+            typeFoodId = bundle.getInt("type_food_id", 0); // default value is 0
         }
+
+        tv = binding.tv;
         recyclerView = binding.rcvListfood;
-//        FoodListAdapter adapter = new FoodListAdapter(getList());
-//        LinearLayoutManager manager = new LinearLayoutManager(requireContext());
-//        recyclerView.setLayoutManager(manager);
-//        recyclerView.setAdapter(adapter);
-        setFoodlistRcv(tf_id);
+
+        // Gọi API lấy thông tin loại món ăn theo id
+        getTypeFoodById(typeFoodId);
 
         return view;
     }
-    private void setFoodlistRcv(int x) {
+
+    // Lấy thông tin loại món ăn theo ID
+    private void getTypeFoodById(int typeFoodId) {
         RetrofitService retrofitService = new RetrofitService();
-        FoodApi foodApi = retrofitService.getRetrofit().create(FoodApi.class);
-        foodApi.getAllFood().enqueue(new Callback<List<Food>>() {
+        TypeFoodApi typeFoodApi = retrofitService.getRetrofit().create(TypeFoodApi.class);
+
+        // Sửa đúng kiểu trả về Callback
+        typeFoodApi.getTypeFoodById(typeFoodId).enqueue(new Callback<TypeFoodResponseDto>() {
             @Override
-            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
+            public void onResponse(Call<TypeFoodResponseDto> call, Response<TypeFoodResponseDto> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Food> li = (List<Food>) response.body();
-                    List<Food> list = new ArrayList<>();
-                    for(Food food:li){
-                        Set<TypeFood> typeFoodList = food.getTypefoods();
-                        for(TypeFood typeFood: typeFoodList){
-                            if(typeFood.getId()==x){
-                                list.add(food);
-                                break;
-                            }
-                        }
+                    TypeFoodResponseDto typeFood = response.body();
+                    if (typeFood != null) {
+                        // Cập nhật tên loại món ăn
+                        tv.setText("Danh sách các món thuộc loại: " + typeFood.getName());
                     }
-                    adapter = new FoodListAdapter(getContext(), list);
-                    recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 4));
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    Toast.makeText(requireContext(), "Failed to retrieve food types", Toast.LENGTH_SHORT).show();
+
+                    Log.d("FoodlistFragment", "Type Food Name: " + typeFood.getName());
+                    // Sau khi lấy được thông tin loại món ăn, gọi API để lấy các món ăn thuộc loại này
+                    getFoodListByType(typeFoodId);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Food>> call, Throwable throwable) {
-                Log.d("fa",throwable.toString());
+            public void onFailure(Call<TypeFoodResponseDto> call, Throwable t) {
+                Log.e("FoodlistFragment", "Error fetching food type: " + t.getMessage());
+                Toast.makeText(getContext(), "Failed to retrieve food type", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
+    // Lấy danh sách món ăn theo loại món ăn
+    private void getFoodListByType(int typeFoodId) {
+        RetrofitService retrofitService = new RetrofitService();
+        FoodApi foodApi = retrofitService.getRetrofit().create(FoodApi.class);
+
+        foodApi.getFoodByType(typeFoodId).enqueue(new Callback<List<FoodItemDto>>() {
+            @Override
+            public void onResponse(Call<List<FoodItemDto>> call, Response<List<FoodItemDto>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<FoodItemDto> foodItems = response.body();
+
+                    // Cập nhật adapter với danh sách món ăn
+                    adapter = new FoodListAdapter(getContext(), foodItems);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // 2 columns in grid
+                    recyclerView.setAdapter(adapter);
+                } else {
+                    Toast.makeText(getContext(), "Failed to retrieve food list", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FoodItemDto>> call, Throwable t) {
+                Log.e("FoodlistFragment", "Error fetching food list: " + t.getMessage());
+                Toast.makeText(getContext(), "Error fetching food list", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

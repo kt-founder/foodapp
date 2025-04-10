@@ -17,13 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfoodapp.R;
 
 import com.example.myfoodapp.databinding.FragmentHomeBinding;
+import com.example.myfoodapp.model.FoodDto;
+import com.example.myfoodapp.model.TypeFoodResponseDto;
 import com.example.myfoodapp.server.FoodApi;
 import com.example.myfoodapp.server.RetrofitService;
 import com.example.myfoodapp.server.TypeFoodApi;
 import com.example.myfoodapp.model.Food;
-import com.example.myfoodapp.model.Food_Adapter;
-import com.example.myfoodapp.model.Food_Type_Adapter;
-import com.example.myfoodapp.model.TypeFood;
+import com.example.myfoodapp.adapter.Food_Adapter;
+import com.example.myfoodapp.adapter.Food_Type_Adapter;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment   {
     private RecyclerView recyclerSearch;
     private Food_Adapter food_adapter;
     private Food_Type_Adapter food_type_adapter;
-    private List<Food> foodList,li;
+    private List<FoodDto> foodList,li;
     private boolean isSearchViewExpanded = false;
     private FragmentHomeBinding binding;
 
@@ -50,44 +51,43 @@ public class HomeFragment extends Fragment   {
         recyclerView = root.findViewById(R.id.rcv_food_type);
         recyclerSearch = root.findViewById(R.id.rcv_food);
         SearchView searchView = root.findViewById(R.id.searchView);
-//        tv=root.findViewById(R.id.tv_search);
         recyclerSearch.setVisibility(View.GONE);
         setupRecyclerView();
         setupRecyclerSearch();
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isSearchViewExpanded = true;
-                recyclerSearch.setVisibility(View.VISIBLE);
+        searchView.setOnSearchClickListener(v -> {
+            isSearchViewExpanded = true;
+            recyclerSearch.setVisibility(View.VISIBLE);
 
-            }
         });
 
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                isSearchViewExpanded = false;
-                recyclerSearch.setVisibility(View.GONE);
-                return false;
-            }
+        searchView.setOnCloseListener(() -> {
+            isSearchViewExpanded = false;
+            recyclerSearch.setVisibility(View.GONE);
+            return false;
         });
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                food_adapter.getFilter().filter(query);
+                if (food_adapter != null && food_adapter.getFilter() != null) {
+                    food_adapter.getFilter().filter(query); // Kiểm tra null trước khi gọi filter
+                } else {
+                    Log.e("SearchView", "food_adapter or filter is null.");
+                }
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                food_adapter.getFilter().filter(newText);
+                if (food_adapter != null && food_adapter.getFilter() != null) {
+                    food_adapter.getFilter().filter(newText); // Kiểm tra null trước khi gọi filter
+                } else {
+                    Log.e("SearchView", "food_adapter or filter is null.");
+                }
                 return true;
             }
         });
-
-
 
         return root;
     }
@@ -96,23 +96,32 @@ public class HomeFragment extends Fragment   {
         RetrofitService retrofitService = new RetrofitService();
         TypeFoodApi typeFoodApi = retrofitService.getRetrofit().create(TypeFoodApi.class);
 
-        typeFoodApi.getAllTypeFood().enqueue(new Callback<List<TypeFood>>() {
+        typeFoodApi.getAllTypeFood1().enqueue(new Callback<List<TypeFoodResponseDto>>() {
             @Override
-            public void onResponse(Call<List<TypeFood>> call, Response<List<TypeFood>> response) {
-
+            public void onResponse(@NonNull Call<List<TypeFoodResponseDto>> call, @NonNull Response<List<TypeFoodResponseDto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-//                    showTypeFoodList(response.body());
-                    food_type_adapter = new Food_Type_Adapter(getContext(), response.body());
-                    recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 5));
+                    List<TypeFoodResponseDto> foodTypes = response.body();
+
+//                    // Kiểm tra danh sách trả về để chắc chắn rằng bạn nhận được dữ liệu đúng
+//                    for (TypeFoodResponseDto foodType : foodTypes) {
+//                        Log.d("FoodType", "Name: " + foodType.getName() + ", Image: " + foodType.getImageBase64());
+//                    }
+
+                    // Gắn dữ liệu vào adapter
+                    food_type_adapter = new Food_Type_Adapter(getContext(), foodTypes);
+                    recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3));
                     recyclerView.setAdapter(food_type_adapter);
                 } else {
                     Toast.makeText(requireContext(), "Failed to retrieve food types", Toast.LENGTH_SHORT).show();
+//                    assert response.body() != null;
+                    Log.d("fa", response.toString());
                 }
             }
 
+
             @Override
-            public void onFailure(Call<List<TypeFood>> call, Throwable throwable) {
-                Log.d("fa",throwable.toString());
+            public void onFailure(Call<List<TypeFoodResponseDto>> call, Throwable throwable) {
+                Log.d("fa", throwable.toString());
             }
         });
     }
@@ -121,27 +130,29 @@ public class HomeFragment extends Fragment   {
         RetrofitService retrofitService = new RetrofitService();
         FoodApi foodApi = retrofitService.getRetrofit().create(FoodApi.class);
 
-        foodApi.getAllFood().enqueue(new Callback<List<Food>>() {
+        foodApi.getAllFood1().enqueue(new Callback<List<FoodDto>>() {
             @Override
-            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
-
+            public void onResponse(Call<List<FoodDto>> call, Response<List<FoodDto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-//                    showTypeFoodList(response.body());
-                    food_adapter = new Food_Adapter(getContext(), response.body());
-
-                    recyclerSearch.setLayoutManager(new GridLayoutManager(requireContext(), 1));
-                    recyclerSearch.setAdapter(food_adapter);
-
+                    List<FoodDto> foodList = response.body(); // Kiểm tra dữ liệu có hợp lệ không
+                    if (foodList != null && !foodList.isEmpty()) {
+                        food_adapter = new Food_Adapter(getContext(), foodList);
+                        recyclerSearch.setLayoutManager(new GridLayoutManager(requireContext(), 1));
+                        recyclerSearch.setAdapter(food_adapter);
+                    } else {
+                        Log.e("FoodList", "Food list is empty.");
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Failed to retrieve food types", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Failed to retrieve food", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Food>> call, Throwable throwable) {
-                Log.d("fa",throwable.toString());
+            public void onFailure(Call<List<FoodDto>> call, Throwable throwable) {
+                Log.d("FoodList", throwable.toString());
             }
         });
     }
+
 
 }

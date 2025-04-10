@@ -1,28 +1,46 @@
 package com.genuinecoder.springserver.controller;
 
-import com.genuinecoder.springserver.model.employee.TypeFood;
-import com.genuinecoder.springserver.model.employee.TypeFoodDAO;
+import com.genuinecoder.springserver.dto.TypeFoodResponseDto;
+import com.genuinecoder.springserver.model.TypeFood;
+import com.genuinecoder.springserver.service.TypeFoodDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(value = "*")
-
+@RequestMapping("/api/typefood")
 public class TypeFoodController {
+
     @Autowired
     private TypeFoodDAO typeFoodDAO;
 
-    @GetMapping("/typefood/get-all")
-    public List<TypeFood> getAllTypeFood() {
+    // Lấy tất cả TypeFood và trả về DTO
+    @GetMapping
+    public List<TypeFoodResponseDto> getAllTypeFood() {
         return typeFoodDAO.getAllTypeFood();
-
+    }
+    //
+    @GetMapping("/{id}")
+    public TypeFoodResponseDto getTypeFoodById(@PathVariable int id) {
+        return typeFoodDAO.getTypeFoodById(id);
     }
 
+    // Thêm TypeFood mới
+    @PostMapping
+    public TypeFood saveTypeFood(@RequestBody TypeFood typeFood) {
+        return typeFoodDAO.save(typeFood);
+    }
 
+    // Cập nhật TypeFood
+    @PutMapping("/{id}")
+    public TypeFoodResponseDto updateTypeFood(@PathVariable int id, @RequestBody TypeFood updatedTypeFood) {
+        return typeFoodDAO.updateTypeFood(id, updatedTypeFood);
+    }
+
+    // Xóa TypeFood
+    @DeleteMapping
+    public void deleteTypeFood(@RequestBody TypeFood typeFood) {
+        typeFoodDAO.deleteTypeFood(typeFood);
+    }
 }

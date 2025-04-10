@@ -1,7 +1,8 @@
-package com.genuinecoder.springserver.model.employee;
+package com.genuinecoder.springserver.repository;
 
 import java.util.List;
 
+import com.genuinecoder.springserver.model.Favorites;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FavoriteRepository extends JpaRepository<Favorites, Integer>{

@@ -158,7 +158,17 @@
         android:id="@+id/nav_admin_quanly"
         android:name="com.example.myfoodapp.ui.admin_quanlyFragment"
         android:label="Quản lý "
-        tools:layout="@layout/fragment_admin_quanly" />
+        tools:layout="@layout/fragment_admin_quanly" >
+        <action
+            android:id="@+id/action_nav_admin_quanly_to_nav_user"
+            app:destination="@id/nav_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_change_password"
+        android:name="com.example.myfoodapp.ui.user.ChangePasswordFragment"
+        android:label="Đổi mật khẩu"
+        tools:layout="@layout/fragment_chang_password" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.myfoodapp.ui.login.LoginFragment"
