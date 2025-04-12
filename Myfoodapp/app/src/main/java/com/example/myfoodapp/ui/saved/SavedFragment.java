@@ -45,31 +45,25 @@ public class SavedFragment extends Fragment {
         FavoriteApi favoriteApi = retrofitService.getRetrofit().create(FavoriteApi.class);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int authID = sharedPreferences.getInt("UserId", -1);
+
         favoriteApi.getFavoritesByUserId(authID).enqueue(new Callback<List<FavoritesDto>>() {
             @Override
             public void onResponse(Call<List<FavoritesDto>> call, Response<List<FavoritesDto>> response) {
-                List<FavoritesDto> fv = response.body();
-                List<Food> f1 = new ArrayList<>();
-                if(fv != null){
-                    for (FavoritesDto f : fv){
-                        Food food = new Food();
-                        food.setId(f.getFoodId());
-                        food.setName(f.getFoodName());
-                        food.setImage(f.getFoodImageBase64());
-                        f1.add(food);
-                    }
+                List<FavoritesDto> favoritesList = response.body();
+                if (favoritesList != null) {
+                    FavoritesAdapter adapter = new FavoritesAdapter(getContext(), favoritesList);
+                    recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
+                    recyclerView.setAdapter(adapter);
                 }
-                FavoritesAdapter favoritesAdapter = new FavoritesAdapter(getContext(),f1);
-                recyclerView.setLayoutManager(new GridLayoutManager(requireContext(),1));
-                recyclerView.setAdapter(favoritesAdapter);
             }
 
             @Override
             public void onFailure(Call<List<FavoritesDto>> call, Throwable throwable) {
-
+                // xử lý nếu cần
             }
         });
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

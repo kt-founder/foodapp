@@ -54,6 +54,14 @@ public class FoodDetailFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         return root;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (bundle != null) {
+            getListFavorite(getView()); // lấy danh sách yêu thích trước → rồi update UI trong đó
+        }
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -121,6 +129,7 @@ public class FoodDetailFragment extends Fragment {
                         Log.e("foooood", String.valueOf(f.getId()));
                     }
                 }
+                updateUI(v);
             }
 
             @Override
@@ -129,7 +138,7 @@ public class FoodDetailFragment extends Fragment {
                 Log.e("FoodDetailFragment", "Error fetching favorites");
             }
         });
-        updateUI(v);
+
 
     }
 
@@ -156,7 +165,6 @@ public class FoodDetailFragment extends Fragment {
             Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
             ivImage.setImageBitmap(bitmap);
             checkFavoriteStatus(favorites, food.getId(), imageButton,authID);
-
         }
     }
 
@@ -171,7 +179,6 @@ public class FoodDetailFragment extends Fragment {
             }
         }
         Log.e("FoodDetailFragment", "check Done");
-
         updateFavoriteButton(isFavorite, imageButton, authID);
     }
 

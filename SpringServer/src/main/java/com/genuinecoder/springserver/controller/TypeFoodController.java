@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/typefood")
+@CrossOrigin("http://localhost:3000")
 public class TypeFoodController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class TypeFoodController {
     }
 
     // Cập nhật TypeFood
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public TypeFoodResponseDto updateTypeFood(@PathVariable int id, @RequestBody TypeFood updatedTypeFood) {
         return typeFoodDAO.updateTypeFood(id, updatedTypeFood);
     }

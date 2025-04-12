@@ -1,6 +1,7 @@
 package com.example.myfoodapp.ui.register;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,14 +54,14 @@ public class RegisterFragment extends Fragment {
                 userApi.addUser(user).enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-
+                        Toast.makeText(getContext(),"Dang ki thanh cong",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(v).navigate(R.id.loginFragment);
+                        //Toast.makeText(getContext(),throwable.toString(),Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable throwable) {
-                        Toast.makeText(getContext(),"Dang ki thanh cong",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(v).navigate(R.id.loginFragment);
-                        //Toast.makeText(getContext(),throwable.toString(),Toast.LENGTH_SHORT).show();
+                        Log.d("TAG",throwable.toString());
                     }
                 });
             }

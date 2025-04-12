@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -24,7 +25,7 @@ public interface FoodApi {
     @POST("/api/food")
     Call<Food> addFoods(@Body Food food);
 
-    @PUT("/api/food/{id}")
+    @PATCH("/api/food/{id}")
     Call<ResponseBody> updateFood(@Path("id") int id, @Body Food updatedFood);
     @GET("/api/food/auth/{id}")
     Call<List<FoodDto>> getAllFoodByAuthId(@Path("id") int authId);

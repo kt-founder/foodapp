@@ -14,4 +14,6 @@ public interface FoodRepository extends JpaRepository<Food, Integer>{
     // Tìm tất cả món ăn theo loại thực phẩm (TypeFood)
     List<Food> findFoodByTypefoods_Id(int typeFoodId);
     List<Food> findFoodByIdAut(int idAut);
+    long count();
+
 }

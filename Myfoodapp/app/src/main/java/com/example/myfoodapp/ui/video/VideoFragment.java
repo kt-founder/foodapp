@@ -58,7 +58,10 @@ public class VideoFragment extends Fragment {
     private List<FavoritesDto> favorites = new ArrayList<>();
     private FragmentVideoBinding binding;
     private FoodDto food;
+    private Bundle bundle;
     private FoodApi foodApi = retrofit.getRetrofit().create(FoodApi.class);
+    private SharedPreferences sharedPreferences;
+    private int authID;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_video, container, false);
@@ -66,11 +69,38 @@ public class VideoFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (bundle != null) {
+            getListFavorite(getView()); // sẽ tự gọi updateUI sau khi có favorites
+        }
+    }
+
+
+    private void getListFavorite(View view) {
+        favoriteApi.getFavoritesByUserId(authID).enqueue(new Callback<List<FavoritesDto>>() {
+            @Override
+            public void onResponse(Call<List<FavoritesDto>> call, Response<List<FavoritesDto>> response) {
+                favorites = response.body();
+                // Gọi update UI sau khi có danh sách yêu thích
+                updateUI(view);
+            }
+
+            @Override
+            public void onFailure(Call<List<FavoritesDto>> call, Throwable throwable) {
+                Log.e("VideoFragment", "Error fetching favorites", throwable);
+            }
+        });
+    }
+
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Bundle bundle = getArguments();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        int authID = sharedPreferences.getInt("UserId", -1);
+        bundle = getArguments();
+        // Đúng thứ tự:
+        sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        authID = sharedPreferences.getInt("UserId", -1);
         //Food food = null;
 
         Button btDetail = view.findViewById(R.id.bt_Detail);
@@ -105,19 +135,7 @@ public class VideoFragment extends Fragment {
                     Toast.makeText(getContext(), "Error fetching food details", Toast.LENGTH_SHORT).show();
                 }
             });
-            favoriteApi.getFavoritesByUserId(authID).enqueue(new Callback<List<FavoritesDto>>() {
-                @Override
-                public void onResponse(Call<List<FavoritesDto>> call, Response<List<FavoritesDto>> response) {
-                    favorites =response.body();
-                }
-
-                @Override
-                public void onFailure(Call<List<FavoritesDto>> call, Throwable throwable) {
-
-                    Log.e("FoodDetailFragment", "Error fetching favorites");
-                }
-            });
-
+            getListFavorite(view);
             //Toast.makeText(getContext(), food.getVideo(), Toast.LENGTH_SHORT).show();
 
         }
@@ -165,8 +183,6 @@ public class VideoFragment extends Fragment {
     }
     private void updateUI(View view) {
         if (food != null) {
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-            int authID = sharedPreferences.getInt("UserId", -1);
             WebView webView = view.findViewById(R.id.vv_video);
             TextView openYoutube = view.findViewById(R.id.moYoutue);
             ImageButton imageButton = view.findViewById(R.id.im_yeuthich);

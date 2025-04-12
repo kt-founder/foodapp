@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/food")
+@CrossOrigin("http://localhost:3000")
 public class FoodController {
 
 	@Autowired
@@ -34,7 +35,7 @@ public class FoodController {
 	}
 
 	// Cập nhật món ăn
-	@PutMapping("/{id}")
+	@PatchMapping("/{id}")
 	public ResponseEntity<String> updateFood(@PathVariable Integer id, @RequestBody Food updatedFood) {
 		return foodDao.update(id, updatedFood);
 	}

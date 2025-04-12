@@ -11,7 +11,6 @@ public class SpringServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringServerApplication.class, args);
 		System.out.println("Da chay tren http://localhost:8080/swagger-ui.html");
-		System.out.println("Bam "+ BCrypt.hashpw("123", BCrypt.gensalt()));
 	}
 
 }

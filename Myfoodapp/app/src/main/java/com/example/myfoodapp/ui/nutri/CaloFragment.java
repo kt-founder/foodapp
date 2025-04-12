@@ -45,24 +45,49 @@ public class CaloFragment extends Fragment {
     private FoodDto food; // Use FoodDto instead of Food
     private ImageButton imageButton;
     private FoodApi foodApi = retrofit.getRetrofit().create(FoodApi.class);
+    private Bundle bundle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_calo, container, false);
         return root;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (bundle != null) {
+            getListFavorite(getView()); // tự động gọi lại updateUI() sau khi có favorites
+        }
+    }
+
+
+    private void getListFavorite(View view) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        int authID = sharedPreferences.getInt("UserId", -1);
+        favoriteApi.getFavoritesByUserId(authID).enqueue(new Callback<List<FavoritesDto>>() {
+            @Override
+            public void onResponse(Call<List<FavoritesDto>> call, Response<List<FavoritesDto>> response) {
+                favorites = response.body();
+                // Chỉ gọi update UI sau khi đã có danh sách yêu thích
+                updateUI(view);
+            }
+
+            @Override
+            public void onFailure(Call<List<FavoritesDto>> call, Throwable throwable) {
+                Log.e("FoodDetailFragment", "Error fetching favorites");
+            }
+        });
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        int authID = sharedPreferences.getInt("UserId", -1);
-        Bundle bundle = getArguments();
+        imageButton = view.findViewById(R.id.im_yeuthich);
+        bundle = getArguments();
 
         if (bundle != null) {
             // Set Image
-            imageButton = view.findViewById(R.id.im_yeuthich);
             int foodId = bundle.getInt("foodId");
             foodApi.getFoodById(foodId).enqueue(new Callback<FoodDto>() {
                 @Override
@@ -84,19 +109,7 @@ public class CaloFragment extends Fragment {
                     Toast.makeText(getContext(), "Error fetching food details", Toast.LENGTH_SHORT).show();
                 }
             });
-            favoriteApi.getFavoritesByUserId(authID).enqueue(new Callback<List<FavoritesDto>>() {
-                @Override
-                public void onResponse(Call<List<FavoritesDto>> call, Response<List<FavoritesDto>> response) {
-                    favorites =response.body();
-                }
-
-                @Override
-                public void onFailure(Call<List<FavoritesDto>> call, Throwable throwable) {
-
-                    Log.e("FoodDetailFragment", "Error fetching favorites");
-                }
-            });
-
+            getListFavorite(view);
 
         }
 
@@ -149,7 +162,6 @@ public class CaloFragment extends Fragment {
                 }
             }
         }
-
         updateFavoriteButton(isFavorite, imageButton, authID);
     }
 

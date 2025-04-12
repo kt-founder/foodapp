@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/favorites")
+@CrossOrigin("http://localhost:3000")
 public class FavoriteController {
 
 	@Autowired
@@ -20,6 +21,10 @@ public class FavoriteController {
 	@GetMapping("/user/{userId}")
 	public List<FavoritesDto> getFavoritesByUserId(@PathVariable int userId) {
 		return favoriteDao.findByUserId(userId);
+	}
+	@GetMapping()
+	public List<FavoritesDto> getAll() {
+		return favoriteDao.findAll();
 	}
 
 	// Thêm món ăn vào danh sách yêu thích
