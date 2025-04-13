@@ -24,6 +24,13 @@ public class FavoriteDao {
 				.map(this::convertToFavoritesDto) // Chuyển đổi thành FavoritesDto
 				.collect(Collectors.toList());
 	}
+	public List<FavoritesDto> findAll() {
+		List<Favorites> favoritesList = favoriteRepository.findAll();
+		return favoritesList.stream()
+				.map(this::convertToFavoritesDto) // Chuyển đổi thành FavoritesDto
+				.collect(Collectors.toList());
+	}
+
 
 	// Thêm món ăn vào danh sách yêu thích
 	public void addFavorite(Favorites favorites) {
