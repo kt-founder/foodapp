@@ -1,5 +1,6 @@
 package com.example.myfoodapp.ui.detail;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -8,12 +9,15 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +76,7 @@ public class FoodDetailFragment extends Fragment {
         Button btDetail = view.findViewById(R.id.bt_Detail);
         Button btNutri = view.findViewById(R.id.bt_nutri);
         Button btVideo = view.findViewById(R.id.bt_video);
+//        Button rate = view.findViewById(R.id.bt_rating);
 
         if (bundle != null) {
             // Lấy foodId từ bundle và gọi API getFoodById
@@ -114,6 +119,40 @@ public class FoodDetailFragment extends Fragment {
 
         Button button3 = view.findViewById(R.id.bt_share);
         button3.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.nav_share));
+        // Set danh gia
+        Button rate = view.findViewById(R.id.bt_rating);
+
+        rate.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Đánh giá");
+
+            // Tạo RatingBar giả định
+            RatingBar ratingBar = new RatingBar(getContext());
+            ratingBar.setNumStars(5);
+            ratingBar.setStepSize(1f);
+
+            // Đặt layout cho RatingBar
+            FrameLayout container = new FrameLayout(getContext());
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.gravity = Gravity.CENTER;
+            container.setPadding(50, 20, 50, 20);
+            container.addView(ratingBar, params);
+
+            builder.setView(container);
+
+            builder.setPositiveButton("Gửi", (dialog, which) -> {
+                int rating = ratingBar.getProgress();
+                Toast.makeText(getContext(), "Đánh giá thành công: " + rating + " sao", Toast.LENGTH_SHORT).show();
+            });
+
+            builder.setNegativeButton("Hủy", null);
+
+            builder.show();
+        });
+
     }
 
     private void getListFavorite(View v) {

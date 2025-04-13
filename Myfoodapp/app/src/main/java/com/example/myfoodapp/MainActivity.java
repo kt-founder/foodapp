@@ -14,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -21,6 +23,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfoodapp.databinding.ActivityMainBinding;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener {
 
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         NavigationView navigationView = binding.navView;
         //set o day
 
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -55,6 +62,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        Set<Integer> topLevelDestinations = new HashSet<>();
+        NavGraph graph = navController.getGraph();
+        for (NavDestination destination : graph) {
+            topLevelDestinations.add(destination.getId());
+        }
+        mAppBarConfiguration = new AppBarConfiguration.Builder(topLevelDestinations)
+                .setOpenableLayout(drawer)
+                .build();
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -83,8 +98,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
             editor.apply();
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+            navController.navigate(R.id.nav_home);
 //          // Load lại
             invalidateOptionsMenu();
+
 
         }
         return super.onOptionsItemSelected(item);
