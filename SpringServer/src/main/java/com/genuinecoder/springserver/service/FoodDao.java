@@ -50,21 +50,41 @@ public class FoodDao {
 		Food existingFood = foodRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Food not found"));
 
-		existingFood.setName(updatedFood.getName());
-		existingFood.setDetail(updatedFood.getDetail());
-		existingFood.setTime(updatedFood.getTime());
-		existingFood.setImage(updatedFood.getImage());
-		existingFood.setVideo(updatedFood.getVideo());
-		existingFood.setGuide(updatedFood.getGuide());
-		existingFood.setIngredient(updatedFood.getIngredient());
-		existingFood.setNutrition(updatedFood.getNutrition());
+		if (updatedFood.getName() != null) {
+			existingFood.setName(updatedFood.getName());
+		}
+		if (updatedFood.getDetail() != null) {
+			existingFood.setDetail(updatedFood.getDetail());
+		}
+		if (updatedFood.getTime() != null) {
+			existingFood.setTime(updatedFood.getTime());
+		}
+		if (updatedFood.getImage() != null) {
+			existingFood.setImage(updatedFood.getImage());
+		}
+		if (updatedFood.getVideo() != null) {
+			existingFood.setVideo(updatedFood.getVideo());
+		}
+		if (updatedFood.getGuide() != null) {
+			existingFood.setGuide(updatedFood.getGuide());
+		}
+		if (updatedFood.getIngredient() != null) {
+			existingFood.setIngredient(updatedFood.getIngredient());
+		}
+		if (updatedFood.getNutrition() != null) {
+			existingFood.setNutrition(updatedFood.getNutrition());
+		}
 		existingFood.setIdAut(updatedFood.getIdAut());
-		existingFood.setTypefoods(updatedFood.getTypefoods());
+
+		if (updatedFood.getTypefoods() != null && !updatedFood.getTypefoods().isEmpty()) {
+			existingFood.setTypefoods(updatedFood.getTypefoods());
+		}
 
 		foodRepository.save(existingFood);
 
 		return ResponseEntity.ok("Food updated successfully.");
 	}
+
 
 	// Lấy tất cả món ăn theo loại thực phẩm (TypeFood)
 	public List<FoodResponseDto> getFoodByTypeFood(int typeFoodId) {
